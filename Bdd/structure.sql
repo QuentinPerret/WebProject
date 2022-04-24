@@ -19,9 +19,13 @@ create table story(
 
 create table chapter(
     ch_id integer not null primary key auto_increment,
-    ch_strory_id integer not null,
+    ch_story_id integer not null,
     ch_title varchar(100) not null,
     ch_story varchar(2000) not null,
-    ch_year integer not null,
+    ch_previous_ch_id integer not null,
+    ch_next_ch_option_A integer not null,
+    ch_next_ch_option_B integer,
+    ch_next_ch_option_C integer,
+    ch_next_ch_option_D integer,
     ch_image varchar(150)
 ) engine=innodb character set utf8 collate utf8_unicode_ci;
