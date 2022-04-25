@@ -13,7 +13,7 @@ create table story(
     sto_title varchar(100) not null,
     sto_description varchar(2000) not null,
     sto_writer varchar(150) not null,
-    sto_first_ch_id integer not null,
+    sto_first_ch_id integer,
     sto_image varchar(150)
 ) engine=innodb character set utf8 collate utf8_unicode_ci;
 
@@ -23,7 +23,7 @@ create table chapter(
     ch_title varchar(100) not null,
     ch_story varchar(2000) not null,
     ch_previous_ch_id integer not null,
-    ch_next_ch_option_A integer not null,
+    ch_next_ch_option_A integer,
     ch_next_ch_option_B integer,
     ch_next_ch_option_C integer,
     ch_next_ch_option_D integer,
