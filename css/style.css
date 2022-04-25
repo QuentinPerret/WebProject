@@ -2,28 +2,10 @@ body {
     padding-top: 60px;
 }
 
-.icon-bar {
-    width: 100%; /* Full-width */
-    background-color: #B00B0B; /* Dark-grey background */
-    overflow: auto; /* Overflow due to float */
-}
-a{
-    font-weight: bold;
-}
-.icon-bar a {
-float: left; /* Float links side by side */
-text-align: center; /* Center-align text */
-width: 20%; /* Equal width (5 icons with 20% width each = 100%) */
-padding: 12px 0; /* Some top and bottom padding */
-transition: all 0.3s ease; /* Add transition for hover effects */
-color: white; /* White text color */
-font-size: 36px; /* Increased font size */
+.navbar-nav .active {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.55);
 }
 
-.icon-bar a:hover {
-background-color: #FFBE33; /* Add a hover color */
-}
-
-.active {
-background-color: #FF4633; /* Add an active/current color */
+i{
+  size: 20px;
 }
