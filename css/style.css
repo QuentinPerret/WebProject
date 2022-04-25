@@ -1,0 +1,11 @@
+body {
+    padding-top: 60px;
+}
+
+.navbar-nav .active {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.55);
+}
+
+i{
+  size: 20px;
+}
