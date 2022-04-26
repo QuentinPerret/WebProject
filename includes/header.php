@@ -33,6 +33,8 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;">
             <li><a class="dropdown-item" style="height: 200px;" href="#">Résumé de l'histoire</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
         </ul>
 
       <li class="nav-item dropdown">
@@ -41,6 +43,8 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;">
             <li><a class="dropdown-item" style="height: 200px;" href="#">Résumé de l'histoire</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
         </ul>
       </li>
 
@@ -50,6 +54,8 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;">
             <li><a class="dropdown-item" style="height: 200px;" href="#">Résumé de l'histoire</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
         </ul>
       </li>
 
@@ -59,6 +65,8 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;">
             <li><a class="dropdown-item" style="height: 200px;" href="#">Résumé de l'histoire</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
         </ul>
       </li>
 
@@ -69,6 +77,8 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;" >
             <li><a class="dropdown-item" style="height: 200px;" href="#">Résumé de l'histoire</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
         </ul>
       </li>
     </ul>
@@ -149,8 +159,18 @@
       <!-- Right elements if connected -->
       <?php } else{ ?>
       <!-- Right elements if not connected -->
-
-
+      <ul class="navbar-nav flex-row">
+      <li class="nav-item dropdown">
+        <a class="nav-link d-sm-flex align-items-sm-center" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+          <img src="Images/pp.png" class="rounded-circle" height="22" alt="" loading="lazy" />
+          <strong class="d-none d-sm-block ms-1">Connectez-vous</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark" style=" margin-right:-55px;" >
+            <li><a class="dropdown-item" href="signin.php">Se connecter</a></li>
+            <li><a class="dropdown-item" href="signup.php">Créer un compte</a></li>
+        </ul>
+      </li>
+    </ul>
       <!-- Right elements if not connected -->
       <?php } ?>
     </div>
