@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['login'] = "my login"; ?>
+$_SESSION['login'] = null; ?>
 
 <!doctype html>
 <html>
@@ -9,7 +9,7 @@ $_SESSION['login'] = "my login"; ?>
 
 <body>
     <div class="container">
-        <?php require_once "includes/headernoco.php"; ?>
+        <?php require_once "includes/header.php"; ?>
 
 </br>
 </br>
