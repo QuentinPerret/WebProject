@@ -1,7 +1,6 @@
 <!-- jQuery -->
 <script src="lib/jquery/jquery.min.js"></script>
 <!-- JavaScript Boostrap plugin -->
-<!-- <script src="lib/bootstrap/js/bootstrap.min.js"></script> -->
 <!-- Font awesome -->
 <script src="https://kit.fontawesome.com/b9d9db605e.js" crossorigin="anonymous"></script>
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
