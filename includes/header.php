@@ -33,6 +33,8 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;">
             <li><a class="dropdown-item" style="height: 200px;" href="#">Résumé de l'histoire</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
         </ul>
 
       <li class="nav-item dropdown">
@@ -41,6 +43,8 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;">
             <li><a class="dropdown-item" style="height: 200px;" href="#">Résumé de l'histoire</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
         </ul>
       </li>
 
@@ -50,6 +54,8 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;">
             <li><a class="dropdown-item" style="height: 200px;" href="#">Résumé de l'histoire</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
         </ul>
       </li>
 
@@ -59,6 +65,8 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;">
             <li><a class="dropdown-item" style="height: 200px;" href="#">Résumé de l'histoire</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
         </ul>
       </li>
 
@@ -69,6 +77,8 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;" >
             <li><a class="dropdown-item" style="height: 200px;" href="#">Résumé de l'histoire</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
         </ul>
       </li>
     </ul>
