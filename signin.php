@@ -9,8 +9,10 @@ session_start();
 
 <body>
     <div class="container-fluid">
-        <?php require_once "Include/header.php"; ?>
+        <?php require_once "Include/headernoco.php"; ?>
     
+</br>
+</br>
 </br>
 </br>
 </br>
@@ -39,9 +41,14 @@ session_start();
             </div>
             <div class="col-sm-7">
                     </div>
-            <div class="form-group row">
+            <div class="form-group row" style="width:100px;" >
                 <button type="submit" class="btn btn-danger">Submit</button>
             </div>
+            <div class="col-sm-6">
+                    </div>
+            
+                <a class="btn btn-primary" href="signup.php">Ou alors créez un compte</a>
+           
         </form>
     </div>
 
