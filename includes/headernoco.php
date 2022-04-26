@@ -78,60 +78,12 @@
     <ul class="navbar-nav flex-row">
       <li class="nav-item dropdown">
         <a class="nav-link d-sm-flex align-items-sm-center" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
-          <img src="Images/pp.png" class="rounded-circle" height="22" alt=""
-            loading="lazy" />
-          <strong class="d-none d-sm-block ms-1">New visitor</strong>
+          <img src="Images/pp.png" class="rounded-circle" height="22" alt="" loading="lazy" />
+          <strong class="d-none d-sm-block ms-1">Connectez-vous</strong>
         </a>
-      <li class="nav-item dropdown">
-        <a class="nav-link d-sm-flex align-items-sm-center" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
-          <span><i class="fas fa-plus-circle fa-lg"></i></span>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle hidden-arrow" href="#" data-bs-toggle="dropdown" aria-expanded="false" id="navbarDropdownMenuLink" role="button"
-          data-mdb-toggle="dropdown" aria-expanded="false">
-          <i class="fas fa-comments fa-lg"></i>
-
-          <span class="badge rounded-pill badge-notification bg-danger">6</span>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-          <li><a class="dropdown-item" href="#">Some news</a></li>
-          <li><a class="dropdown-item" href="#">Another news</a></li>
-          <li>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle hidden-arrow" data-bs-toggle="dropdown" aria-expanded="false" href="#" id="navbarDropdownMenuLink" role="button"
-          data-mdb-toggle="dropdown" aria-expanded="false">
-          <i class="fas fa-bell fa-lg"></i>
-          <span class="badge rounded-pill badge-notification bg-danger">12</span>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-          <li><a class="dropdown-item" href="#">Some news</a></li>
-          <li><a class="dropdown-item" href="#">Another news</a></li>
-          <li>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle hidden-arrow" href="#" data-bs-toggle="dropdown" aria-expanded="false" id="navbarDropdownMenuLink" role="button"
-          data-mdb-toggle="dropdown" aria-expanded="false">
-          <i class="fas fa-chevron-circle-down fa-lg"></i>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-          <li><a class="dropdown-item" href="#">Some news</a></li>
-          <li><a class="dropdown-item" href="#">Another news</a></li>
-          <li>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </li>
+        <ul class="dropdown-menu dropdown-menu-dark" style=" margin-right:-55px;" >
+            <li><a class="dropdown-item" href="signin.php">Se connecter</a></li>
+            <li><a class="dropdown-item" href="signup.php">Créer un compte</a></li>
         </ul>
       </li>
     </ul>
