@@ -10,7 +10,7 @@
           <i class="fas fa-bars fa-lg"></i>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#">
+        <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="index.php">
           <img src="Images/dragon2.jpg" height="40" alt="" loading="lazy"
             style="margin-top: 2px" />
         </a>
@@ -73,7 +73,7 @@
       </li>
     </ul>
     <!-- Center elements -->
-    
+
       <!-- Right elements (connexion)-->
       <?php if(isUserConnected()){ ?>
       <ul class="navbar-nav flex-row">
