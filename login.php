@@ -5,7 +5,7 @@ session_start();
 <!doctype html>
 <html>
 
-<?php require_once "Include/head.php"; ?>
+<?php require_once "includes/head.php"; ?>
 
 <body>
     <div class="container-fluid">
