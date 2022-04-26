@@ -5,11 +5,11 @@ session_start();
 <!doctype html>
 <html>
 
-<?php require_once "Include/head.php"; ?>
+<?php require_once "includes/head.php"; ?>
 
 <body>
     <div class="container-fluid">
-        <?php require_once "Include/headernoco.php"; ?>
+        <?php require_once "includes/headernoco.php"; ?>
     
 </br>
 </br>
@@ -52,10 +52,10 @@ session_start();
         </form>
     </div>
 
-        <?php require_once "Include/footer.php"; ?>
+        <?php require_once "includes/footer.php"; ?>
     </div>
 
-    <?php require_once "Include/scripts.php"; ?>
+    <?php require_once "includes/scripts.php"; ?>
 </body>
 
 </html>
