@@ -9,7 +9,7 @@ $_SESSION['login'] = "my login"; ?>
 
 <body>
     <div class="container">
-        <?php require_once "includes/header.php"; ?>
+        <?php require_once "includes/headernoco.php"; ?>
 
 </br>
 </br>
