@@ -22,9 +22,9 @@ session_start();
                 <div class="col-sm-8">
                     <div class="col-sm-6">
                     </div>
-                    <label for="email"class="col-sm-2 col-form-label">Email address</label>
+                    <label for="Login"class="col-sm-2 col-form-label">Login</label>
                     <div class="col-sm-4">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                        <input type="text" class="form-control" id="Login" placeholder="Login" required>
                     </div>
                 </div>      
             </div>
@@ -35,7 +35,7 @@ session_start();
                     </div>
                     <label for="password" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-4">
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
                     </div>
                 </div>  
             </div>
