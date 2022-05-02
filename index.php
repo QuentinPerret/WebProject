@@ -20,7 +20,7 @@ $_SESSION['login']; ?>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <img src="Images/Caroussel/dragon.png" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="dragon">
+                <a role="button" href="storyCreation.php"><img src="Images/Caroussel/dragon.png" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="dragon"></a>
                 </div>
                 <div class="carousel-item">
                 <img src="Images/Caroussel/skull.png" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="skull">

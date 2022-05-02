@@ -30,13 +30,10 @@ $_SESSION['login'] = null; ?>
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                 </div>
-                <div class="card-footer text-muted">
-                    2 days ago
-                </div>
                 </div>
                 <div class="card mb-5"style="margin-right: 50px;"   >
                 <div class="card-body">
-                    <h4 class="card-title">Stroy Creator</h4>
+                    <h4 class="card-title">Story Creator</h4>
                     <h6 class="card-subtitle mb-2 text-muted">Your story</h6>
                     <p class="card-text">Write your title and description, then choose your chapters.</p>
                         <form>
@@ -71,7 +68,7 @@ $_SESSION['login'] = null; ?>
                                 </td>
                                 
                                 </tr>
-                        <?php $tab=null;
+                        <?php $tab=getAllChapter(1);
                         foreach($tab as $key=>$ligne){?>
                             <tr>        
                                 <th scope="row"><?php echo($ligne)?></th>
@@ -105,7 +102,7 @@ $_SESSION['login'] = null; ?>
 
         <?php require_once "includes/footer.php"; ?>
     </div>
-
+    <?php require_once "includes/functions.php"; ?>
     <?php require_once "includes/scripts.php"; ?>
 </body>
 
