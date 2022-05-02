@@ -4,8 +4,13 @@ session_start();
 
 <!doctype html>
 <html>
-
-<?php require_once "includes/head.php"; ?>
+    <?php 
+    require_once "includes/functions.php";
+    if(checkUser()){ 
+        addNewUser(); 
+        redirect("index.php");
+    }
+    require_once "includes/head.php";  ?>
 
 <body>
     <div class="container-fluid">
@@ -17,17 +22,14 @@ session_start();
         </br>
         </br>
     </div>
-    <?php require_once "includes/functions.php";
-    echo($_POST['login']);
-    if(checkUser()) { addNewUser(); } ?>
-        <form method="$_POST" class="row g-2" action="signup.php" novalidate >
+        <form method="post" class="row g-2" action="signup.php" novalidate >
         <div class="form-group row" >
                 <div class="col-sm-8">
                     <div class="col-sm-6">
                     </div>
                     <label for="login"class="col-sm-2 col-form-label">Login</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="login" placeholder="Login" required>
+                        <input type="text" class="form-control" name="login" id="login" placeholder="Login" required>
                     </div>
                 </div>      
             </div>
@@ -37,7 +39,7 @@ session_start();
                     </div>
                     <label for="email"class="col-sm-2 col-form-label">Email address</label>
                     <div class="col-sm-4">
-                        <input type="email" class="form-control" id="email" placeholder="Email" required>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
                     </div>
                 </div>      
             </div>
@@ -48,7 +50,7 @@ session_start();
                     </div>
                     <label for="password" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-4">
-                        <input type="password" class="form-control" id="password" placeholder="Password" required>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                     </div>
                 </div>  
             </div>
@@ -58,7 +60,7 @@ session_start();
                     </div>
                     <label for="password_conf" class="col-sm-2 col-form-label">Confirm Password</label>
                     <div class="col-sm-4">
-                        <input type="password" class="form-control" id="password_conf" placeholder="Password" required>
+                        <input type="password" class="form-control" name="password_conf" id="password_conf" placeholder="Password" required>
                     </div>
                 </div>  
             </div>
