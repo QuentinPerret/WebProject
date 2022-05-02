@@ -20,13 +20,13 @@ create table story(
 
 create table chapter(
     ch_id integer not null primary key auto_increment,
-    ch_story_id integer not null, --foreign key
+    ch_story_id integer not null, 
     ch_title varchar(100) not null,
     ch_story varchar(2000),
-    -- ch_previous_ch_id integer not null,
-    ch_next_ch_option_A integer, --foreign key
-    ch_next_ch_option_B integer, --foreign key
-    ch_next_ch_option_C integer, --foreign key
-    ch_next_ch_option_D integer, --foreign key
+    
+    ch_next_ch_option_A integer, 
+    ch_next_ch_option_B integer, 
+    ch_next_ch_option_C integer, 
+    ch_next_ch_option_D integer, 
     ch_image varchar(150)
 ) engine=innodb character set utf8 collate utf8_unicode_ci;
