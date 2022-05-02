@@ -29,7 +29,7 @@ function checkUser(){
     if(isset($_POST['login']) or isset($_POST['email']) or isset($_POST['password'])){
         $requete = 'SELECT * FROM user WHERE usr_login=:login';
         $req = getDb()->prepare($requete);
-        $req -> execute(array( login =>$_POST['login']));
+        $req -> execute(array(login =>$_POST['login']));
         $tab = $req -> fetchAll();
         if($tab == null){
             return true;
@@ -41,11 +41,6 @@ function checkUser(){
     }
     
 }
-
-function logout() {
-    
-}
-
 // Add a new user in the DataBase
 function addNewUser(){
     $login = escape($_POST['login']);

@@ -7,6 +7,7 @@ session_start();
     <?php 
     require_once "includes/functions.php";
     if(checkUser()){ 
+        echo("azuefiazefbib");
         addNewUser(); 
         redirect("index.php");
     }
