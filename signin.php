@@ -11,12 +11,7 @@ session_start();
     <div class="container-fluid">
         <?php require_once "includes/header.php"; ?>
     
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
+<div class="container" style="margin-top: 100px">
         <form>
             <div class="form-group row">
                 <div class="col-sm-8">
@@ -51,7 +46,7 @@ session_start();
            
         </form>
     </div>
-
+    </div>
         <?php require_once "includes/footer.php"; ?>
     </div>
 

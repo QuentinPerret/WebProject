@@ -11,10 +11,7 @@ $_SESSION['login'] = null; ?>
     <div class="container">
         <?php require_once "includes/header.php"; ?>
 
-</br>
-</br>
-</br>
-</br>
+<div class="container" style="margin-top: 100px">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -41,7 +38,7 @@ $_SESSION['login'] = null; ?>
                 <span class="visually-hidden">Next</span>
             </button>
             </div>
-
+</div>
         <?php require_once "includes/footer.php"; ?>
     </div>
 

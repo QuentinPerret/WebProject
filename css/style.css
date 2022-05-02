@@ -1,12 +1,15 @@
 body {
     background-color: #eac7a8;
+
 }
+
 .card {
   width: 400px;
   border: none;
   border-radius: 10px;
   background-color: #fff
 }
+
 .stats {
   background: #f2f5f8 !important;
   color: #000 !important
