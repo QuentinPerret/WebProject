@@ -98,7 +98,7 @@
             </ul>
           </li>
         <li class="nav-item dropdown">
-          <a class="nav-link d-sm-flex align-items-sm-center" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+          <a class="nav-link d-sm-flex align-items-sm-center" role="button" data-bs-toggle="dropdown" aria-expanded="false" href=logout.php>
             <img src="Images/pp.png" class="rounded-circle" height="22" alt=""
               loading="lazy" />
             <strong class="d-none d-sm-block ms-1"><?php echo($_SESSION['login']); ?></strong>
