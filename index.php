@@ -11,10 +11,7 @@ $_SESSION['login'] = null; ?>
     <div class="container">
         <?php require_once "includes/header.php"; ?>
 
-</br>
-</br>
-</br>
-</br>
+<div class="container" style="margin-top: 100px">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -23,13 +20,13 @@ $_SESSION['login'] = null; ?>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <img src="Images/dragoncaroussel.png" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="dragon">
+                <img src="Images/Caroussel/dragon.png" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="dragon">
                 </div>
                 <div class="carousel-item">
-                <img src="Images/skull.png" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="skull">
+                <img src="Images/Caroussel/skull.png" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="skull">
                 </div>
                 <div class="carousel-item">
-                <img src="Images/druid.png" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="druid">
+                <img src="Images/Caroussel/druid.png" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="druid">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -41,7 +38,7 @@ $_SESSION['login'] = null; ?>
                 <span class="visually-hidden">Next</span>
             </button>
             </div>
-
+</div>
         <?php require_once "includes/footer.php"; ?>
     </div>
 
