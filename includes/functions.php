@@ -43,9 +43,7 @@ function checkUser(){
 }
 
 function logout() {
-    session_start();
-    session_destroy();
-    redirect('index.php');
+    
 }
 
 // Add a new user in the DataBase
