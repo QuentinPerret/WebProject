@@ -61,6 +61,11 @@ function addNewUser(){
     $_SESSION['login'] = $login;
 }
 
+function getAllChapter($id_story){
+    $request = 'SELECT * FROM chapter WHERE ch_story_id = $id_story';
+    $res  = getDb() -> query($request);
+    return $res -> fetchAll();
+}
 // Add a new story in the DataBase
 function addNewStory(){
     $title = escape($_POST['title']);
