@@ -27,24 +27,19 @@ function escape($value) {
 
 function checkUser(){
 
-    /*echo("start test");
     if(isset($_POST['login']) and isset($_POST['email']) and isset($_POST['password'])){
-        echo("test 1");
         $requete = 'SELECT * FROM user WHERE usr_login=:login';
         $req = getDb()->prepare($requete);
-        $req -> execute(array(login =>$_POST['login']));
+        $req -> execute(array('login' => $_POST['login']));
         $tab = $req -> fetchAll();
         if($tab == null){
-            echo("test2");
             return true;
         }else {
             return false;
         }
     }else {
-        echo("false test 1");
         return false ;
-    }*/
-    echo("true");
+    }
     return (isset($_POST['login']) or isset($_POST['email']) or isset($_POST['password']));
 }
 // Add a new user in the DataBase
