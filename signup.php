@@ -4,31 +4,24 @@ session_start();
 
 <!doctype html>
 <html>
-    <?php 
-    require_once "includes/functions.php";
-    if(checkUser()){ 
-        echo("azuefiazefbib");
-        addNewUser(); 
-        redirect("index.php");
-    }
-    require_once "includes/head.php";  ?>
+    <?php require_once "includes/head.php";  ?>
 
 <body>
     <div class="container-fluid">
-        <?php require_once "includes/header.php"; ?>
-    
 
+    <?php 
+    require_once "includes/functions.php";
+    echo("uzebhvflhrbeln");
+    if(checkUser()){ 
+        addNewUser(); 
+        redirect("index.php");
+    }
+    require_once "includes/header.php"; ?>
     <div class="container" style="margin-top: 100px">
         <form>
             <div class="form-group row">
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
     </div>
-        <form method="post" class="row g-2" action="signup.php" novalidate >
+        <form method="post" class="row g-2" novalidate >
         <div class="form-group row" >
                 <div class="col-sm-8">
                     <div class="col-sm-6">
@@ -82,7 +75,6 @@ session_start();
     <div>
         <?php require_once "includes/footer.php"; ?>
     </div>
-
     <?php require_once "includes/scripts.php"; ?>
 </body>
 
