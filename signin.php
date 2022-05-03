@@ -1,25 +1,23 @@
-<?php
-session_start();
-?>
-
+<?php session_start(); ?>
 <!doctype html>
 <html>
-
-<?php require_once "includes/head.php"; ?>
-
+<?php 
+require_once "includes/functions.php";
+isUserInDb();
+require_once "includes/head.php"; ?>
 <body>
     <div class="container-fluid">
         <?php require_once "includes/header.php"; ?>
     
 <div class="container" style="margin-top: 100px">
-        <form>
+        <form method='post' action='signin.php'>
             <div class="form-group row">
                 <div class="col-sm-8">
                     <div class="col-sm-6">
                     </div>
                     <label for="Login"class="col-sm-2 col-form-label">Login</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="Login" placeholder="Login" required>
+                        <input type="text" class="form-control" name ="login" id="login" placeholder="Login" required>
                     </div>
                 </div>      
             </div>
@@ -30,7 +28,7 @@ session_start();
                     </div>
                     <label for="password" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-4">
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                     </div>
                 </div>  
             </div>

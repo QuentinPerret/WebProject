@@ -26,10 +26,11 @@ function escape($value) {
 }
 
 function checkUser(){
-    if(isset($_POST['login']) or isset($_POST['email']) or isset($_POST['password'])){
+
+    if(isset($_POST['login']) and isset($_POST['email']) and isset($_POST['password'])){
         $requete = 'SELECT * FROM user WHERE usr_login=:login';
         $req = getDb()->prepare($requete);
-        $req -> execute(array( login =>$_POST['login']));
+        $req -> execute(array('login' => $_POST['login']));
         $tab = $req -> fetchAll();
         if($tab == null){
             return true;
@@ -39,15 +40,8 @@ function checkUser(){
     }else {
         return false ;
     }
-    
+    return (isset($_POST['login']) or isset($_POST['email']) or isset($_POST['password']));
 }
-
-function logout() {
-    session_start();
-    session_destroy();
-    redirect('index.php');
-}
-
 // Add a new user in the DataBase
 function addNewUser(){
     $login = escape($_POST['login']);
@@ -111,4 +105,21 @@ function addnewChapter(){
         values (?, ?, ?, ?, ?, ?, ?, ?)');
         $stmt->execute(array($title, $story, $prevCh, $nextChA, $nextChB, $nextChC, $nextChD, $image));
         redirect("editStory.php");
+}
+
+function isUserInDb(){
+    if (!empty($_POST['login']) and !empty($_POST['password'])) {
+        $login = $_POST['login'];
+        $password = $_POST['password'];
+        $stmt = getDb()->prepare('SELECT * FROM user WHERE usr_login=? AND usr_password=?');
+        $stmt->execute(array($login, $password));
+        if ($stmt->rowCount() == 1) {
+            // Authentication successful
+            $_SESSION['login'] = $login;
+            redirect("index.php");
+        }
+        else {
+            $error = "Utilisateur non reconnu";
+        }
+    }
 }

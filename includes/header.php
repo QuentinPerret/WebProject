@@ -93,12 +93,12 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
               <li><a class="dropdown-item" href="profile.php">See your profile</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="includes/logout.php">Logout</a></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
         <li class="nav-item dropdown">
-          <a class="nav-link d-sm-flex align-items-sm-center" role="button" data-bs-toggle="dropdown" aria-expanded="false" href=logout.php>
+          <a class="nav-link d-sm-flex align-items-sm-center" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
             <img src="Images/pp.png" class="rounded-circle" height="22" alt=""
               loading="lazy" />
             <strong class="d-none d-sm-block ms-1"><?php echo($_SESSION['login']); ?></strong>

@@ -1,3 +1,6 @@
-<?php session_start();
+<?php 
+require_once('functions.php');
+session_start();
+session_unset();
 session_destroy();
-redirect('index.php'); ?>
+redirect('../index.php'); ?>
