@@ -106,3 +106,20 @@ function addnewChapter(){
         $stmt->execute(array($title, $story, $prevCh, $nextChA, $nextChB, $nextChC, $nextChD, $image));
         redirect("editStory.php");
 }
+
+function isUserInDb(){
+    if (!empty($_POST['login']) and !empty($_POST['password'])) {
+        $login = $_POST['login'];
+        $password = $_POST['password'];
+        $stmt = getDb()->prepare('SELECT * FROM user WHERE usr_login=? AND usr_password=?');
+        $stmt->execute(array($login, $password));
+        if ($stmt->rowCount() == 1) {
+            // Authentication successful
+            $_SESSION['login'] = $login;
+            redirect("index.php");
+        }
+        else {
+            $error = "Utilisateur non reconnu";
+        }
+    }
+}
