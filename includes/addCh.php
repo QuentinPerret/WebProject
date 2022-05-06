@@ -1,4 +1,7 @@
 <?php 
 session_start();
 require_once 'functions.php';
-addBlankCh(); ?>
+editStory($_GET['stoId']);
+addBlankCh(); 
+redirect('../../storyCreation.php');
+?>

@@ -98,7 +98,6 @@ function addBlankCh() {
     $ch_image = NULL;
     //insert new row in db
     $stmt->execute(array($ch_story_id,$ch_title,$ch_story,$ch_next_ch_option_A,$ch_next_ch_option_B,$ch_next_ch_option_C,$ch_next_ch_option_D,$ch_image));
-    redirect("../storyCreation.php");
 }
 function delCh($id){
     $requete = 'DELETE FROM chapter WHERE ch_id=?';
@@ -107,28 +106,22 @@ function delCh($id){
 }
 
 // Add a new Chapter in the DataBase
-function editChapter(){
+function editStory($id_story){
     $title = escape($_POST['title']);
-    $story = escape($_POST['story']);
-    $prevCh  = escape($_SESSION ['prevCh']);
-    $nextChA = escape($_POST['nextChA']);
-    $nextChB = escape($_POST['nextChB']);
-    $nextChC = escape($_POST['nextChC']);
-    $nextChD = escape($_POST['nextChC']);
+    $description = escape($_POST['description']);
+    //update chapter into BD
+    $stmt = getDb()->prepare('UPDATE story SET sto_title = :title , sto_description = :description WHERE sto_id = :id');
+    $stmt -> execute(array(
+        'title' => $title,
+        'description' => $description,
+        'id' => $id_story
+    ));
+}
 
-    $tmpFile = $_FILES['image']['tmp_name'];
-        if (is_uploaded_file($tmpFile)) {
-            // upload movie image
-            $image = basename($_FILES['image']['name']);
-            $uploadedFile = "images/$image";
-            move_uploaded_file($_FILES['image']['tmp_name'], $uploadedFile);
-        }
-        // insert chapter into BD
-        $stmt = getDb()->prepare('insert into user
-        (ch_title,ch_story,ch_previous_ch_id,ch_next_ch_option_A,ch_next_ch_option_B,ch_next_ch_option_C,ch_next_ch_option_D,ch_image)
-        values (?, ?, ?, ?, ?, ?, ?, ?)');
-        $stmt->execute(array($title, $story, $prevCh, $nextChA, $nextChB, $nextChC, $nextChD, $image));
-        redirect("editStory.php");
+function getStory($id_story){
+    $stmt = getDb() -> prepare('SELECT * FROM story WHERE sto_id = ?');
+    $res =  $stmt -> execute(array($id_story));
+    return $res;
 }
 
 function isUserInDb(){

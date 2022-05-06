@@ -35,43 +35,33 @@ $_SESSION['story_id'] = 1;?>
                     <h4 class="card-title">Story Creator</h4>
                     <h6 class="card-subtitle mb-2 text-muted">Your story</h6>
                     <p class="card-text">Write your title and description, then choose your chapters.</p>
-                        <form>
+                        <form method="post">
                         <div class="form-group">
                             <label  for="exampleFormControlInput1">Title</label>
                             <input type="text" name="title"class="form-control" id="exampleFormControlInput1" placeholder="MyStory">
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Description</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" name="description"rows="3" placeholder="Once upon a time..."></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="description"rows="3" placeholder="<?php $ligne = getStory(1);
+                            if($ligne){
+                            if(is_null($ligne['sto_description'])){
+                                echo("");
+                            } else  {
+                            echo($ligne);}}?>"></textarea>
                         </div>
                         <table class="table">
                         <thead>
                                 <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Type</th>
                                 <th scope="col">Title</th>
                                 
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                <th scope="row">1</th>
-                                <td>Chapter</td>
-                                <td>Dragon</td>
-                                <td><a role="button" action="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
-                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                                        </svg>
-                                    </a>
-                                </td>
-                                </tr>
                         <?php $tab=getAllChapter(1);
                         foreach($tab as $key=>$ligne){?>
                             <tr>        
-                                <th scope="row"><?php echo($ligne)?></th>
-                                <td><?php echo($ligne["ch_title"])?></td>
-                                <td><a role="button" href="includes/delCh.php/?id=<?php echo($ligne['ch_id']); ?>">
+                                <th scope="row"><?php echo($ligne['ch_title'])?></th>
+                                <td><button type="submit" formaction="includes/delCh.php/?id=<?php echo($ligne['ch_id']);?>&&?stoId= <?php echo($ligne['ch_story_id']);?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
                                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
@@ -87,7 +77,7 @@ $_SESSION['story_id'] = 1;?>
                                 <button type="submit" class="btn btn-danger">Submit</button>
                             </div>
                             <div class="form-group" style="width:100px;" >
-                            <a class="btn btn-primary" href="includes/addCh.php">Ajouter un Chapitre</a>
+                                <button type="submit" class="btn btn-primary" formaction="includes/addCh.php/?stoId= <?php echo($ligne['ch_story_id']);?>">Ajouter un Chapitre</a>
                             </div>
                         </form>
                 </div>
@@ -101,13 +91,10 @@ $_SESSION['story_id'] = 1;?>
                     <a href="#" class="card-link">Another link</a>
                 </div>
                 </div>      
-            </div>  
-
-
+            </div>
         <?php require_once "includes/footer.php"; ?>
     </div>
     <?php require_once "includes/functions.php"; ?>
     <?php require_once "includes/scripts.php"; ?>
 </body>
-
 </html>
