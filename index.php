@@ -11,7 +11,7 @@ $_SESSION['login'] = null; ?>
     <div class="container">
         <?php require_once "includes/header.php"; ?>
 
-<div class="container" style="margin-top: 100px">
+<div class="container" style="margin-top: 100px;">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -20,10 +20,10 @@ $_SESSION['login'] = null; ?>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <img src="Images/Caroussel/dragon.png" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="dragon">
+                <a href="storyCreation.php"><img src="Images/Caroussel/dragon.png" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="dragon"></a>
                 </div>
                 <div class="carousel-item">
-                <img src="Images/Caroussel/skull.png" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="skull">
+                <a href="chapterCreation.php"><img src="Images/Caroussel/skull.png" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="skull"></a>
                 </div>
                 <div class="carousel-item">
                 <img src="Images/Caroussel/druid.png" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="druid">
