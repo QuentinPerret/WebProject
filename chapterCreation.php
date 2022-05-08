@@ -1,8 +1,9 @@
-<?php session_start(); 
-if(!isset($_SESSION['id_chapter'])){
-$_SESSION['id_chapter'] = $_GET['idCh'];}
+<?php session_start();
 require_once "includes/functions.php";
-$chapter = getCh($_SESSION['id_chapter']);?>
+$chapter = getCh($_GET['idCh']);
+if($chapter == null){
+echo('$chapter == null');};
+?>
 
 <!doctype html>
 <html>

@@ -126,10 +126,23 @@ function getStory($id_story){
 }
 
 function getCh($id_chapter){
+    echo($id_chapter);
     $stmt = getDb() -> prepare('SELECT * FROM chapter WHERE ch_id = :id');
     $stmt -> execute(array('id' => $id_chapter));
     $ligne = $stmt->fetch();
     return $ligne;
+}
+
+function editCh($id_chapter){
+    $title = escape($_POST['title']);
+    $story = escape($_POST['story']);
+    //update chapter into BD
+    $stmt = getDb()->prepare('UPDATE chapter SET ch_title = :title , ch_story = :story WHERE ch_id = :id');
+    $stmt -> execute(array(
+        'title' => $title,
+        'story' => $story,
+        'id' => $id_chapter
+    ));
 }
 
 function isUserInDb(){
