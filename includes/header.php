@@ -94,7 +94,8 @@
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
               <li><a class="dropdown-item" href="profile.php">See your profile</a></li>
               <li><a class="dropdown-item" href="includes/logout.php">Logout</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="storyCreation.php">Create a new strory</a></li>
+              <li><a class="dropdown-item" href="includes/addCh.php">Add Ch</a></li>
             </ul>
           </li>
         <li class="nav-item dropdown">

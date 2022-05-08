@@ -56,9 +56,10 @@ function addNewUser(){
 }
 
 function getAllChapter($id_story){
-    $request = 'SELECT * FROM chapter WHERE ch_story_id = $id_story';
-    $res  = getDb() -> query($request);
-    return $res -> fetchAll();
+    $request = 'SELECT * FROM chapter WHERE ch_story_id = ?';
+    $response = getDb() -> prepare($request);
+    $response -> execute(array($id_story));
+    return $response -> fetchAll();
 }
 // Add a new story in the DataBase
 function addNewStory(){
@@ -81,30 +82,47 @@ function addNewStory(){
         $stmt->execute(array($title, $description, $writer, $firstCh, $image));
         redirect("editStory.php");
 }
+//Create a new chapter with nothing in 
+function addBlankCh() {
+    //prepare request 
+    $stmt = getDb()->prepare("INSERT INTO chapter (ch_story_id,ch_title,ch_story,ch_next_ch_option_A,ch_next_ch_option_B,ch_next_ch_option_C,ch_next_ch_option_D,ch_image) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    //set all values
+    $ch_story_id = 1;
+    $ch_title = "blank chapter";
+    $ch_story = NULL;
+    $ch_next_ch_option_A = NULL;
+    $ch_next_ch_option_B = NULL;
+    $ch_next_ch_option_C = NULL;
+    $ch_next_ch_option_D = NULL;
+    $ch_image = NULL;
+    //insert new row in db
+    $stmt->execute(array($ch_story_id,$ch_title,$ch_story,$ch_next_ch_option_A,$ch_next_ch_option_B,$ch_next_ch_option_C,$ch_next_ch_option_D,$ch_image));
+}
+function delCh($id){
+    $requete = 'DELETE FROM chapter WHERE ch_id=?';
+    $response = getDb()->prepare($requete);
+    $response->execute(array($id));
+}
 
 // Add a new Chapter in the DataBase
-function addnewChapter(){
+function editStory($id_story){
     $title = escape($_POST['title']);
-    $story = escape($_POST['story']);
-    $prevCh  = escape($_SESSION ['prevCh']);
-    $nextChA = escape($_POST['nextChA']);
-    $nextChB = escape($_POST['nextChB']);
-    $nextChC = escape($_POST['nextChC']);
-    $nextChD = escape($_POST['nextChC']);
+    $description = escape($_POST['description']);
+    //update chapter into BD
+    $stmt = getDb()->prepare('UPDATE story SET sto_title = :title , sto_description = :description WHERE sto_id = :id');
+    $stmt -> execute(array(
+        'title' => $title,
+        'description' => $description,
+        'id' => $id_story
+    ));
+}
 
-    $tmpFile = $_FILES['image']['tmp_name'];
-        if (is_uploaded_file($tmpFile)) {
-            // upload movie image
-            $image = basename($_FILES['image']['name']);
-            $uploadedFile = "images/$image";
-            move_uploaded_file($_FILES['image']['tmp_name'], $uploadedFile);
-        }
-        // insert chapter into BD
-        $stmt = getDb()->prepare('insert into user
-        (ch_title,ch_story,ch_previous_ch_id,ch_next_ch_option_A,ch_next_ch_option_B,ch_next_ch_option_C,ch_next_ch_option_D,ch_image)
-        values (?, ?, ?, ?, ?, ?, ?, ?)');
-        $stmt->execute(array($title, $story, $prevCh, $nextChA, $nextChB, $nextChC, $nextChD, $image));
-        redirect("editStory.php");
+function getStory($id_story){
+    $stmt = getDb() -> prepare('SELECT * FROM story WHERE sto_id = :id');
+    $stmt -> execute(array('id' => $id_story));
+    $ligne = $stmt->fetch();
+    return $ligne;
 }
 
 function isUserInDb(){
