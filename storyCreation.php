@@ -38,16 +38,11 @@ $_SESSION['story_id'] = 1;?>
                         <form method="post">
                         <div class="form-group">
                             <label  for="exampleFormControlInput1">Title</label>
-                            <input type="text" name="title"class="form-control" id="exampleFormControlInput1" placeholder="MyStory">
+                            <input type="text" name="title"class="form-control" id="exampleFormControlInput1" placeholder="MyStory" value="<?php $ligne = getStory($_SESSION['story_id']);echo($ligne['sto_title']);?>">
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Description</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" name="description"rows="3" placeholder="<?php $ligne = getStory(1);
-                            if($ligne){
-                            if(is_null($ligne['sto_description'])){
-                                echo("");
-                            } else  {
-                            echo($ligne);}}?>"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="description"rows="3"><?php $ligne = getStory($_SESSION['story_id']);echo($ligne['sto_description']);?></textarea>
                         </div>
                         <table class="table">
                         <thead>
@@ -57,7 +52,7 @@ $_SESSION['story_id'] = 1;?>
                                 </tr>
                             </thead>
                             <tbody>
-                        <?php $tab=getAllChapter(1);
+                        <?php $tab=getAllChapter($_SESSION['story_id']);
                         foreach($tab as $key=>$ligne){?>
                             <tr>        
                                 <th scope="row"><?php echo($ligne['ch_title'])?></th>

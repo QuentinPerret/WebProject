@@ -119,9 +119,10 @@ function editStory($id_story){
 }
 
 function getStory($id_story){
-    $stmt = getDb() -> prepare('SELECT * FROM story WHERE sto_id = ?');
-    $res =  $stmt -> execute(array($id_story));
-    return $res;
+    $stmt = getDb() -> prepare('SELECT * FROM story WHERE sto_id = :id');
+    $stmt -> execute(array('id' => $id_story));
+    $ligne = $stmt->fetch();
+    return $ligne;
 }
 
 function isUserInDb(){
