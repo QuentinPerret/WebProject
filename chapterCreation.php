@@ -1,8 +1,6 @@
 <?php session_start();
 require_once "includes/functions.php";
 $chapter = getCh($_GET['idCh']);
-if($chapter == null){
-echo('$chapter == null');};
 ?>
 
 <!doctype html>
@@ -49,7 +47,7 @@ echo('$chapter == null');};
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Content</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" name="description"rows="3" placeholder="Once upon a time..."><?php echo($chapter['ch_story'])?></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="story"rows="3" placeholder="Once upon a time..."><?php echo($chapter['ch_story'])?></textarea>
                         </div>
                     
                         <fieldset>
@@ -57,12 +55,46 @@ echo('$chapter == null');};
                             <div class="mb-3">
                             <label for="Select" class="form-label">Choose previous chapter</label>
                             <select id="Select" class="form-select">
-                                <option>Previous chapter</option>
-                            </select>                            </div>
+                                <option value >Previous chapter</option>
+                            </select></div>
                             <div class="mb-3">
-                            <label for="Select" class="form-label">Choose next chapter</label>
-                            <select id="Select" class="form-select">
-                                <option>Incoming chapter</option>
+                            <label for="Select" class="form-label">Choose next chapter OPTION A</label>
+                            <select id="Select" name="IdNextChA" class="form-select">
+                                <?php $tab = getAllChapter($_SESSION['story_id']);
+                                foreach($tab as $key=>$ligne){
+                                    if($ligne['ch_id']!=$_GET['idCh']){?>
+                                <option value='<?php echo($ligne['ch_id'])?>'><?php echo($ligne['ch_title'])?></option>
+                                <?php }} ?>
+                            </select>
+                            </div>
+                            <div class="mb-3">
+                            <label for="Select" class="form-label">Choose next chapter OPTION B</label>
+                            <select id="Select" name="IdNextChB" class="form-select">
+                                <?php $tab = getAllChapter($_SESSION['story_id']);
+                                foreach($tab as $key=>$ligne){
+                                    if($ligne['ch_id']!=$_GET['idCh']){?>
+                                <option value='<?php echo($ligne['ch_id'])?>'><?php echo($ligne['ch_title'])?></option>
+                                <?php }} ?>
+                            </select>
+                            </div>
+                            <div class="mb-3">
+                            <label for="Select" class="form-label">Choose next chapter OPTION C</label>
+                            <select id="Select" name="IdNextChC" class="form-select">
+                                <?php $tab = getAllChapter($_SESSION['story_id']);
+                                foreach($tab as $key=>$ligne){
+                                    if($ligne['ch_id']!=$_GET['idCh']){?>
+                                <option value='<?php echo($ligne['ch_id'])?>'><?php echo($ligne['ch_title'])?></option>
+                                <?php }} ?>
+                            </select>
+                            </div>
+                            <div class="mb-3">
+                            <label for="Select" class="form-label">Choose next chapter OPTION D</label>
+                            <select id="Select" name="IdNextChD" class="form-select">
+                                <?php $tab = getAllChapter($_SESSION['story_id']);
+                                foreach($tab as $key=>$ligne){
+                                    if($ligne['ch_id']!=$_GET['idCh']){?>
+                                <option value='<?php echo($ligne['ch_id'])?>'><?php echo($ligne['ch_title'])?></option>
+                                <?php }} ?>
                             </select>
                             </div>
                             <div class="mb-3">
@@ -73,7 +105,7 @@ echo('$chapter == null');};
                                 </label>
                             </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" formaction="includes/editCh.php/?idCh=<?php echo($_GET['idCh']);?>"class="btn btn-primary">Submit</button>
                         </fieldset>
                         
                             
