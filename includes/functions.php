@@ -125,6 +125,13 @@ function getStory($id_story){
     return $ligne;
 }
 
+function getCh($id_chapter){
+    $stmt = getDb() -> prepare('SELECT * FROM chapter WHERE ch_id = :id');
+    $stmt -> execute(array('id' => $id_chapter));
+    $ligne = $stmt->fetch();
+    return $ligne;
+}
+
 function isUserInDb(){
     if (!empty($_POST['login']) and !empty($_POST['password'])) {
         $login = $_POST['login'];
