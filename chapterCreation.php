@@ -108,7 +108,12 @@ $chapter = getCh($_GET['idCh']);?>
                                 </label>
                             </div>
                             </div>
-                            <button type="submit" formaction="includes/editCh.php?idCh=<?php echo($_GET['idCh']);?>"class="btn btn-primary">Submit</button>
+                            <div class="form-group" style="width:100px;" >
+                                <button type="submit" formaction="includes/editCh.php?idCh=<?php echo($_GET['idCh']);?>" class="btn btn-primary">Submit</button>
+                            </div>
+                            <div class="form-group" style="width:100px;" >
+                                <button type="submit" class="btn btn-danger" formaction="includes/editChBack.php?idCh=<?php echo($_GET['idCh']);?>">Retourner à la story</a>
+                            </div>
                         </fieldset>
                         
                             
