@@ -73,10 +73,10 @@ $story = getStory($_SESSION['story_id']);?>
                             </tbody>
                             </table>
                             <div class="form-group" style="width:100px;" >
-                                <button type="submit" class="btn btn-danger" formaction="includes/editStory.php?stoId= <?php echo($ligne['ch_story_id']);?>">Submit</button>
+                                <button type="submit" class="btn btn-primary" formaction="includes/editStory.php?stoId= <?php echo($ligne['ch_story_id']);?>">Submit</button>
                             </div>
                             <div class="form-group" style="width:100px;" >
-                                <button type="submit" class="btn btn-primary" formaction="includes/addCh.php?stoId= <?php echo($ligne['ch_story_id']);?>">Ajouter un Chapitre</a>
+                                <button type="submit" class="btn btn-danger" formaction="includes/addCh.php?stoId= <?php echo($ligne['ch_story_id']);?>">Ajouter un Chapitre</a>
                             </div>
                         </form>
                 </div>
