@@ -85,20 +85,32 @@ function addNewStory(){
 //Create a new chapter with nothing in 
 function addBlankCh() {
     //prepare request 
-    $stmt = getDb()->prepare("INSERT INTO chapter (ch_story_id,ch_title,ch_story,ch_next_ch_option_A,ch_next_ch_option_B,ch_next_ch_option_C,ch_next_ch_option_D,ch_image) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = getDb()->prepare("INSERT INTO chapter (ch_story_id,ch_title,ch_story,end_sto,ch_link) 
+    VALUES (?, ?, ?, ?, ?)");
     //set all values
     $ch_story_id = 1;
     $ch_title = "blank chapter";
     $ch_story = NULL;
-    $ch_next_ch_option_A = NULL;
-    $ch_next_ch_option_B = NULL;
-    $ch_next_ch_option_C = NULL;
-    $ch_next_ch_option_D = NULL;
-    $ch_image = NULL;
+    $end = NULL;
+    $next_ch = NULL;
     //insert new row in db
-    $stmt->execute(array($ch_story_id,$ch_title,$ch_story,$ch_next_ch_option_A,$ch_next_ch_option_B,$ch_next_ch_option_C,$ch_next_ch_option_D,$ch_image));
+    $stmt->execute(array($ch_story_id,$ch_title,$ch_story,$end,$next_ch));
 }
+
+function addNewLink($id_chapter){
+    $stmt = getDb()->prepare("INSERT INTO link (link_ch,link_next) 
+    VALUES (?, ?)");
+    $stmt->execute(array($id_chapter,null));
+}
+
+function editLink($id_link,$next_ch){
+    $stmt = getDb()->prepare("UPDATE link SET link_next= :next WHERE link_id = :id");
+    $stmt->execute(array(
+        'next' => $next_ch,
+        'id' => $id_link
+    ));
+}
+
 function delCh($id){
     $requete = 'DELETE FROM chapter WHERE ch_id=?';
     $response = getDb()->prepare($requete);

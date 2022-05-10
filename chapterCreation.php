@@ -50,16 +50,9 @@ $chapter = getCh($_GET['idCh']);?>
                         </div>
                     
                         <fieldset>
-                            <!-- <legend>Previous chapter</legend>
                             <div class="mb-3">
-                            <label for="Select" class="form-label">Choose previous chapter</label>
-                            <select id="Select" class="form-select">
-                                <option value >Previous chapter</option>
-                            </select></div> -->
-                            <div class="mb-3">
-                            <label for="Select" class="form-label">Choose next chapter OPTION A</label>
-                            <select id="Select" name="IdNextChA" class="form-select">
-                            <option value='null'>Null</option>
+                            <label for="Select" class="form-label">Choose next chapter option</label>
+                            <select id="Select" name="nextCh" class="form-select">
                                 <?php $tab = getAllChapter($_SESSION['story_id']);
                                 foreach($tab as $key=>$ligne){
                                     if($ligne['ch_id']!=$_GET['idCh']){?>
@@ -68,51 +61,13 @@ $chapter = getCh($_GET['idCh']);?>
                             </select>
                             </div>
                             <div class="mb-3">
-                            <label for="Select" class="form-label">Choose next chapter OPTION B</label>
-                            <select id="Select" name="IdNextChB" class="form-select">
-                            <option value='null'>Null</option>
-                                <?php $tab = getAllChapter($_SESSION['story_id']);
-                                foreach($tab as $key=>$ligne){
-                                    if($ligne['ch_id']!=$_GET['idCh']){?>
-                                <option value='<?php echo($ligne['ch_id'])?>' <?php if($ligne['ch_id']==$chapter['ch_next_ch_option_B']){echo('selected');}?>><?php echo($ligne['ch_title'])?></option>
-                                <?php }} ?>
-                            </select>
-                            </div>
-                            <div class="mb-3">
-                            <label for="Select" class="form-label">Choose next chapter OPTION C</label>
-                            <select id="Select" name="IdNextChC" class="form-select">
-                                <option value='null'>Null</option>
-                                <?php $tab = getAllChapter($_SESSION['story_id']);
-                                foreach($tab as $key=>$ligne){
-                                    if($ligne['ch_id']!=$_GET['idCh']){?>
-                                <option value='<?php echo($ligne['ch_id'])?>' <?php if($ligne['ch_id']==$chapter['ch_next_ch_option_C']){echo('selected');}?>><?php echo($ligne['ch_title'])?></option>
-                                <?php }} ?>
-                            </select>
-                            </div>
-                            <div class="mb-3">
-                            <label for="Select" class="form-label">Choose next chapter OPTION D</label>
-                            <select id="Select" name="IdNextChD" class="form-select">
-                            <option value='null'>Null</option>
-                                <?php $tab = getAllChapter($_SESSION['story_id']);
-                                foreach($tab as $key=>$ligne){
-                                    if($ligne['ch_id']!=$_GET['idCh']){?>
-                                <option value='<?php echo($ligne['ch_id'])?>' <?php if($ligne['ch_id']==$chapter['ch_next_ch_option_D']){echo('selected');}?>><?php echo($ligne['ch_title'])?></option>
-                                <?php }} ?>
-                            </select>
-                            </div>
-                            <div class="mb-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="FieldsetCheck">
-                                <label class="form-check-label" for="FieldsetCheck">
-                                Is it a final chapter?
-                                </label>
+                                <input class="form-check-input" type="checkbox" id="finalCh" name="finalCh" value="Y">
+                                <label for="finalCh"> Is it a final chapter?</label>
                             </div>
                             </div>
                             <button type="submit" formaction="includes/editCh.php?idCh=<?php echo($_GET['idCh']);?>"class="btn btn-primary">Submit</button>
                         </fieldset>
-                        
-                            
-                            
                         </form>
                 </div>
                 </div>
