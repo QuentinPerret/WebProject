@@ -26,7 +26,7 @@ $_SESSION['login']; ?>
                 <a role="button" href="chapterCreation.php"><img src="Images/Caroussel/skull.png" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="skull"></a>
                 </div>
                 <div class="carousel-item">
-                <img src="Images/Caroussel/druid.png" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="druid">
+                <a role="button" href="stories.php"><img src="Images/Caroussel/druid.png" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="druid"></a>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
