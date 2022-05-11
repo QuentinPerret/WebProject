@@ -85,22 +85,39 @@ function addNewStory(){
 //Create a new chapter with nothing in 
 function addBlankCh() {
     //prepare request 
-    $stmt = getDb()->prepare("INSERT INTO chapter (ch_story_id,ch_title,ch_story,ch_next_ch_option_A,ch_next_ch_option_B,ch_next_ch_option_C,ch_next_ch_option_D,ch_image) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = getDb()->prepare("INSERT INTO chapter (ch_story_id,ch_title,ch_story,end_sto) 
+    VALUES (?, ?, ?, ?)");
     //set all values
     $ch_story_id = 1;
     $ch_title = "blank chapter";
     $ch_story = NULL;
-    $ch_next_ch_option_A = NULL;
-    $ch_next_ch_option_B = NULL;
-    $ch_next_ch_option_C = NULL;
-    $ch_next_ch_option_D = NULL;
-    $ch_image = NULL;
+    $end = false;
     //insert new row in db
-    $stmt->execute(array($ch_story_id,$ch_title,$ch_story,$ch_next_ch_option_A,$ch_next_ch_option_B,$ch_next_ch_option_C,$ch_next_ch_option_D,$ch_image));
+    $stmt->execute(array($ch_story_id,$ch_title,$ch_story,$end));
 }
+
+function addNewLink($id_chapter){
+    $stmt = getDb()->prepare("INSERT INTO link (link_ch,link_next) 
+    VALUES (?, ?)");
+    $stmt->execute(array($id_chapter,null));
+}
+
+function editLink($id_link,$next_ch){
+    $stmt = getDb()->prepare("UPDATE link SET link_next= :next WHERE link_id = :id");
+    $stmt->execute(array(
+        'next' => $next_ch,
+        'id' => $id_link
+    ));
+}
+
 function delCh($id){
     $requete = 'DELETE FROM chapter WHERE ch_id=?';
+    $response = getDb()->prepare($requete);
+    $response->execute(array($id));
+}
+
+function delLink($id){
+    $requete = 'DELETE FROM link WHERE link_id=?';
     $response = getDb()->prepare($requete);
     $response->execute(array($id));
 }
@@ -125,6 +142,48 @@ function getStory($id_story){
     return $ligne;
 }
 
+function getCh($id_chapter){
+    echo($id_chapter);
+    $stmt = getDb() -> prepare('SELECT * FROM chapter WHERE ch_id = :id');
+    $stmt -> execute(array('id' => $id_chapter));
+    $ligne = $stmt->fetch();
+    return $ligne;
+}
+
+function editCh($id_chapter){
+    $title = escape($_POST['title']);
+    $story = escape($_POST['story']);
+    $endSto = escape($_POST['endSto']);
+    //update chapter into BD
+    $stmt = getDb()->prepare('UPDATE chapter SET ch_title =:title,ch_story =:story, end_sto =:endSto  WHERE ch_id = :id');
+    $stmt -> execute(array(
+        'title' => $title,
+        'story' => $story,
+        'endSto' => $endSto,
+        'id' => $id_chapter
+    ));
+}
+
+function getAllLink($id_chapter){
+    $request = 'SELECT * FROM link WHERE link_ch = ?';
+    $response = getDb() -> prepare($request);
+    $response -> execute(array($id_chapter));
+    return $response -> fetchAll();
+}
+
+function getLink($id_link){
+    $request = 'SELECT * FROM link WHERE link_id = ?';
+    $response = getDb() -> prepare($request);
+    $response -> execute(array($id_link));
+    return $response -> fetch();
+}
+function editAllLink($idCh){
+    $chapter = getCh($idCh);
+    $links = getAllLink($chapter['ch_id']); 
+    foreach($links as $key=>$ligne){
+        editLink($ligne['link_id'],$_POST[$ligne['link_id']]);
+    }
+}
 function isUserInDb(){
     if (!empty($_POST['login']) and !empty($_POST['password'])) {
         $login = $_POST['login'];

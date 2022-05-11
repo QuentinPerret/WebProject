@@ -1,6 +1,7 @@
 drop table if exists user;
 drop table if exists story;
 drop table if exists chapter;
+drop table if exists link;
 
 create table user (
     usr_id integer not null primary key auto_increment,
@@ -23,9 +24,11 @@ create table chapter(
     ch_story_id integer not null, 
     ch_title varchar(100) not null,
     ch_story varchar(2000),
-    ch_next_ch_option_A integer, 
-    ch_next_ch_option_B integer, 
-    ch_next_ch_option_C integer, 
-    ch_next_ch_option_D integer, 
-    ch_image varchar(150)
+    end_sto boolean
 ) engine=innodb character set utf8 collate utf8_unicode_ci;
+
+create table link(
+    link_id integer not null primary key auto_increment,
+    link_ch integer not null,
+    link_next integer
+)engine=innodb character set utf8 collate utf8_unicode_ci;

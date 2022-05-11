@@ -1,5 +1,10 @@
 <?php session_start(); 
-$_SESSION['story_id'] = 1;?>
+$_SESSION['story_id'] = "1 ";
+
+if(!isset($_SESSION['story_id'])){
+$_SESSION['story_id'] = $_GET['story_id'];}
+require_once "includes/functions.php";
+$story = getStory($_SESSION['story_id']);?>
 
 <!doctype html>
 <html>
@@ -38,11 +43,11 @@ $_SESSION['story_id'] = 1;?>
                         <form method="post">
                         <div class="form-group">
                             <label  for="exampleFormControlInput1">Title</label>
-                            <input type="text" name="title"class="form-control" id="exampleFormControlInput1" placeholder="MyStory" value="<?php $ligne = getStory($_SESSION['story_id']);echo($ligne['sto_title']);?>">
+                            <input type="text" name="title"class="form-control" id="exampleFormControlInput1" placeholder="MyStory" value="<?php echo($story['sto_title']);?>">
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Description</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" name="description"rows="3"><?php $ligne = getStory($_SESSION['story_id']);echo($ligne['sto_description']);?></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="description"rows="3"><?php echo($story['sto_description']);?></textarea>
                         </div>
                         <table class="table">
                         <thead>
@@ -54,14 +59,14 @@ $_SESSION['story_id'] = 1;?>
                             <tbody>
                         <?php $tab=getAllChapter($_SESSION['story_id']);
                         foreach($tab as $key=>$ligne){?>
-                            <tr>        
-                                <th scope="row"><?php echo($ligne['ch_title'])?></th>
-                                <td><button type="submit" formaction="includes/delCh.php/?id=<?php echo($ligne['ch_id']);?>&&?stoId= <?php echo($ligne['ch_story_id']);?>">
+                            <tr>
+                                <th scope="row"><a href ="chapterCreation.php?idCh=<?php echo($ligne['ch_id']);?>"><?php echo($ligne['ch_title'])?></a></th>
+                                <td><button type="submit" formaction="includes/delCh.php?id=<?php echo($ligne['ch_id']);?>&?stoId=<?php echo($story['sto_id']);?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
                                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
                                         </svg>
-                                    </a>
+                                        </button>
                                 </td>
                             </tr>
 
@@ -69,10 +74,10 @@ $_SESSION['story_id'] = 1;?>
                             </tbody>
                             </table>
                             <div class="form-group" style="width:100px;" >
-                                <button type="submit" class="btn btn-danger">Submit</button>
+                                <button type="submit" class="btn btn-primary" formaction="includes/editStory.php?stoId= <?php echo($story['sto_id']);?>">Submit</button>
                             </div>
                             <div class="form-group" style="width:100px;" >
-                                <button type="submit" class="btn btn-primary" formaction="includes/addCh.php/?stoId= <?php echo($ligne['ch_story_id']);?>">Ajouter un Chapitre</a>
+                                <button type="submit" class="btn btn-danger" formaction="includes/addCh.php?stoId= <?php echo($story['sto_id']);?>">Ajouter un Chapitre</a>
                             </div>
                         </form>
                 </div>
