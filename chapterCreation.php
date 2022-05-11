@@ -62,8 +62,8 @@ $chapter = getCh($_GET['idCh']);?>
                             </div>
                             <div class="mb-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="finalCh" name="finalCh" value="Y">
-                                <label for="finalCh"> Is it a final chapter?</label>
+                                <input class="form-check-input" type="checkbox" id="endSto" name="endSto" value="true">
+                                <label for="endSto"> Is it a final chapter?</label>
                             </div>
                             </div>
                             <div class="form-group" style="width:100px;" >

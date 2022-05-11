@@ -148,20 +148,13 @@ function getCh($id_chapter){
 function editCh($id_chapter){
     $title = escape($_POST['title']);
     $story = escape($_POST['story']);
-    $idA = escape($_POST['IdNextChA']);
-    $idB = escape($_POST['IdNextChB']);
-    $idC = escape($_POST['IdNextChC']);
-    $idD = escape($_POST['IdNextChD']);
+    $endSto = escape($_POST['endSto']);
     //update chapter into BD
-    $stmt = getDb()->prepare('UPDATE chapter SET ch_title = :title , ch_story = :story ,
-    ch_next_ch_option_A = :idA , ch_next_ch_option_B = :idB , ch_next_ch_option_C = :idC , ch_next_ch_option_D = :idD WHERE ch_id = :id');
+    $stmt = getDb()->prepare('UPDATE chapter SET ch_title =:title,ch_story =:story, end_sto =:endSto  WHERE ch_id = :id');
     $stmt -> execute(array(
         'title' => $title,
         'story' => $story,
-        'idA' => $idA,
-        'idB' => $idB,
-        'idC' => $idC,
-        'idD' => $idD,
+        'endSto' => $endSto,
         'id' => $id_chapter
     ));
 }

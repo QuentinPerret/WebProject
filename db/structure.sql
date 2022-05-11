@@ -23,8 +23,7 @@ create table chapter(
     ch_story_id integer not null, 
     ch_title varchar(100) not null,
     ch_story varchar(2000),
-    end_sto varchar(1),
-    ch_link integer
+    end_sto boolean,
 ) engine=innodb character set utf8 collate utf8_unicode_ci;
 
 create table link(
