@@ -64,8 +64,11 @@ $chapter = getCh($_GET['idCh']);?>
                                                         { echo('selected');}?> >
                                                         <?php echo($ligne['ch_title'])?> 
                                             </option>
-                                    <?php }}} ?>
-                                </select>
+                                    <?php }} ?>
+                                </select> <?php } ?>
+                            </div> 
+                            <div class="form-group" style="width:100px;" >
+                                <button type="submit" class="btn btn-danger" formaction="includes/addLinkCh.php?chId=<?php echo($chapter['ch_id']);?>">Ajouter un nouveau choix</a>
                             </div>
                             <div class="mb-3">
                             <div class="form-check">
