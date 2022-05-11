@@ -116,6 +116,12 @@ function delCh($id){
     $response->execute(array($id));
 }
 
+function delLink($id){
+    $requete = 'DELETE FROM link WHERE link_id=?';
+    $response = getDb()->prepare($requete);
+    $response->execute(array($id));
+}
+
 // Add a new Chapter in the DataBase
 function editStory($id_story){
     $title = escape($_POST['title']);
@@ -165,6 +171,19 @@ function getAllLink($id_chapter){
     return $response -> fetchAll();
 }
 
+function getLink($id_link){
+    $request = 'SELECT * FROM link WHERE link_id = ?';
+    $response = getDb() -> prepare($request);
+    $response -> execute(array($id_link));
+    return $response -> fetch();
+}
+function editAllLink($idCh){
+    $chapter = getCh($idCh);
+    $links = getAllLink($chapter['ch_id']); 
+    foreach($links as $key=>$ligne){
+        editLink($ligne['link_id'],$_POST[$ligne['link_id']]);
+    }
+}
 function isUserInDb(){
     if (!empty($_POST['login']) and !empty($_POST['password'])) {
         $login = $_POST['login'];
