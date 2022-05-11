@@ -51,18 +51,25 @@ $chapter = getCh($_GET['idCh']);?>
                     
                         <fieldset>
                             <div class="mb-3">
-                            <label for="Select" class="form-label">Choose next chapter option</label>
-                            <select id="Select" name="nextCh" class="form-select">
-                                <?php $tab = getAllChapter($_SESSION['story_id']);
-                                foreach($tab as $key=>$ligne){
-                                    if($ligne['ch_id']!=$_GET['idCh']){?>
-                                <option value='<?php echo($ligne['ch_id'])?>' <?php if($ligne['ch_id']==$chapter['ch_next_ch_option_A']){echo('selected');}?>><?php echo($ligne['ch_title'])?></option>
-                                <?php }} ?>
-                            </select>
+                            <?php $links = getAlllink($chapter['ch_id']); 
+                            $tab = getAllChapter($_SESSION['story_id']);
+                            foreach($links as $key=>$link) { ?>
+                            <label for='<?php echo($link['link_id']);?>'>Select the next chapter option</label>
+                                <select id="select" name='<?php echo($link['link_id']);?>' class="form-select">
+                                    <?php
+                                    foreach($tab as $key=>$ligne){
+                                        if($ligne['ch_id']!=$_GET['idCh']){?>
+                                            <option value='<?php echo($ligne['ch_id'])?>' 
+                                                    <?php if($ligne['ch_id'] == $link['link_next'])
+                                                        { echo('selected');}?> >
+                                                        <?php echo($ligne['ch_title'])?> 
+                                            </option>
+                                    <?php }}} ?>
+                                </select>
                             </div>
                             <div class="mb-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="endSto" name="endSto" value="true">
+                                <input class="form-check-input" type="checkbox" id="endSto" name="endSto" value="1" <?php if($chapter['end_sto']==1) { echo('checked');} ?>>
                                 <label for="endSto"> Is it a final chapter?</label>
                             </div>
                             </div>

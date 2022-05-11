@@ -61,7 +61,7 @@ $story = getStory($_SESSION['story_id']);?>
                         foreach($tab as $key=>$ligne){?>
                             <tr>
                                 <th scope="row"><a href ="chapterCreation.php?idCh=0<?php echo($ligne['ch_id']);?>"><?php echo($ligne['ch_title'])?></a></th>
-                                <td><button type="submit" formaction="includes/delCh.php?id=<?php echo($ligne['ch_id']);?>&&?stoId=<?php echo($ligne['ch_story_id']);?>">
+                                <td><button type="submit" formaction="includes/delCh.php?id=<?php echo($ligne['ch_id']);?>&&?stoId=<?php echo($story['sto_id']);?>">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
                                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
@@ -73,10 +73,10 @@ $story = getStory($_SESSION['story_id']);?>
                             </tbody>
                             </table>
                             <div class="form-group" style="width:100px;" >
-                                <button type="submit" class="btn btn-primary" formaction="includes/editStory.php?stoId= <?php echo($ligne['ch_story_id']);?>">Submit</button>
+                                <button type="submit" class="btn btn-primary" formaction="includes/editStory.php?stoId= <?php echo($story['sto_id']);?>">Submit</button>
                             </div>
                             <div class="form-group" style="width:100px;" >
-                                <button type="submit" class="btn btn-danger" formaction="includes/addCh.php?stoId= <?php echo($ligne['ch_story_id']);?>">Ajouter un Chapitre</a>
+                                <button type="submit" class="btn btn-danger" formaction="includes/addCh.php?stoId= <?php echo($story['sto_id']);?>">Ajouter un Chapitre</a>
                             </div>
                         </form>
                 </div>

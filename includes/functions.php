@@ -85,16 +85,15 @@ function addNewStory(){
 //Create a new chapter with nothing in 
 function addBlankCh() {
     //prepare request 
-    $stmt = getDb()->prepare("INSERT INTO chapter (ch_story_id,ch_title,ch_story,end_sto,ch_link) 
-    VALUES (?, ?, ?, ?, ?)");
+    $stmt = getDb()->prepare("INSERT INTO chapter (ch_story_id,ch_title,ch_story,end_sto) 
+    VALUES (?, ?, ?, ?)");
     //set all values
     $ch_story_id = 1;
     $ch_title = "blank chapter";
     $ch_story = NULL;
-    $end = NULL;
-    $next_ch = NULL;
+    $end = false;
     //insert new row in db
-    $stmt->execute(array($ch_story_id,$ch_title,$ch_story,$end,$next_ch));
+    $stmt->execute(array($ch_story_id,$ch_title,$ch_story,$end));
 }
 
 function addNewLink($id_chapter){
@@ -157,6 +156,13 @@ function editCh($id_chapter){
         'endSto' => $endSto,
         'id' => $id_chapter
     ));
+}
+
+function getAllLink($id_chapter){
+    $request = 'SELECT * FROM link WHERE link_ch = ?';
+    $response = getDb() -> prepare($request);
+    $response -> execute(array($id_chapter));
+    return $response -> fetchAll();
 }
 
 function isUserInDb(){
