@@ -73,7 +73,7 @@ $story = getStory($_GET['stoId']);?>
                         <?php } ?>
                         </tbody>
                         </table>
-                        <label for='firstCh'>Select the first chapter od your story</label>
+                        <label for='firstCh'>Select the first chapter of your story</label>
                             <select id="select" name='firstCh' class="form-select">
                                     <?php
                                     foreach($tab as $key=>$ligne){ ?>

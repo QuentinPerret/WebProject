@@ -158,12 +158,12 @@ function delStory($idSto){
 //----------------------------------------------------
 //                      Chapter
 //----------------------------------------------------
-function addBlankCh() {
+function addBlankCh($stoId) {
     //prepare request 
     $stmt = getDb()->prepare("INSERT INTO chapter (ch_story_id,ch_title,ch_story,end_sto) 
     VALUES (?, ?, ?, ?)");
     //set all values
-    $ch_story_id = 1;
+    $ch_story_id = $stoId;
     $ch_title = "blank chapter";
     $ch_story = NULL;
     $end = false;
