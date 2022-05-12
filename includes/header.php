@@ -113,7 +113,7 @@
       <!-- Right elements if connected -->
       <?php } else{ ?>
       <!-- Right elements if not connected -->
-      <ul class="navbar-nav flex-row">
+      <ul class="navbar-nav flex-row" style="font-size: 20px">
       <li class="nav-item dropdown">
         <a class="nav-link d-sm-flex align-items-sm-center" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
           <img src="Images/pp.png" class="rounded-circle" height="22" alt="" loading="lazy" />
