@@ -20,11 +20,10 @@ $story = getStory($_GET['stoId']);?>
                             <div class="d-flex align-items-center">
                                 <div class="image"> <img src="Images/statistics.png" class="rounded" width="155"> </div>
                                 <div class="ml-3 w-100">
-                                    <h4 class="mb-0 mt-0"><?php echo($_SESSION['login']); ?>'s stat</h4> <span></span>
+                                    <h4 class="mb-0 mt-0">Story's stat</h4> <span></span>
                                     <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
-                                        <div class="d-flex flex-column"> <span class="articles">Games played</span> <span class="number1">100</span> </div>
-                                        <div class="d-flex flex-column"> <span class="followers">Games won</span> <span class="number2">20</span> </div>
-                                        <div class="d-flex flex-column"> <span class="rating">Deaths</span> <span class="number3">2</span> </div>
+                                        <div class="d-flex flex-column"> <span class="articles">Games played</span> <span class="number1"><?=$story['sto_played']?></span> </div>
+                                        <div class="d-flex flex-column"> <span class="followers">Games finished</span> <span class="number2"><?=$story['sto_finished']?></span> </div>
                                     </div>
                                 </div>
                             </div>
