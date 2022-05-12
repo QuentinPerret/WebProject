@@ -26,7 +26,7 @@ session_start();?>
                 <h3 class="card-header">Titre de l'histoire</h3>
                 <div class="card-body">
                     <h5 class="card-title">The current chapter</h5>
-                    <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                    <h6 class="card-subtitle text-muted">With ?? character</h6>
                 </div>
                 
                 <div class="card-body">
