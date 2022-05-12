@@ -20,7 +20,7 @@ $_SESSION['login']; ?>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <a role="button" href="storyCreation.php"><img src="Images/book.png" style="width: 400px; height: 400px; object-fit: cover; margin-bottom: 30px;" class="d-block mx-auto" alt="dragon"></a>
+                <a role="button" href="<?php if(isUserConnected()) echo('storyCreation.php'); else echo('signin.php') ?>"><img src="Images/book.png" style="width: 400px; height: 400px; object-fit: cover; margin-bottom: 30px;" class="d-block mx-auto" alt="dragon"></a>
                 </div>
                 <div class="carousel-item">
                 <a role="button" href="#"><img src="Images/OurBooks.png" style="width: 400px; height: 400px; object-fit: cover; margin-left: -30px; margin-bottom: 30px;" class="d-block mx-auto" alt="skull"></a>
