@@ -18,7 +18,8 @@ create table story(
     sto_description varchar(2000),
     sto_writer varchar(150) not null,
     sto_first_ch_id integer,
-    sto_image varchar(150)
+    sto_played integer not null,
+    sto_finished integer not null
 ) engine=innodb character set utf8 collate utf8_unicode_ci;
 
 create table chapter(

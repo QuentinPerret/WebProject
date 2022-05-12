@@ -86,26 +86,6 @@ function getUser($user){
 //----------------------------------------------------
 //                      Story
 //----------------------------------------------------
-function addNewStory(){
-    $title = escape($_POST['title']);
-    $description = escape($_POST['description']);
-    $writer  = escape($_SESSION ['login']);
-    $firstCh = escape($_POST['first_ch']);
-
-    $tmpFile = $_FILES['image']['tmp_name'];
-        if (is_uploaded_file($tmpFile)) {
-            // upload movie image
-            $image = basename($_FILES['image']['name']);
-            $uploadedFile = "images/$image";
-            move_uploaded_file($_FILES['image']['tmp_name'], $uploadedFile);
-        }
-        // insert story into BD
-        $stmt = getDb()->prepare('insert into user
-        (sto_title,sto_description,sto_writer,sto_first_ch_id,sto_image)
-        values (?, ?, ?, ?, ?)');
-        $stmt->execute(array($title, $description, $writer, $firstCh, $image));
-        redirect("editStory.php");
-}
 function getStory($id_story){
     $stmt = getDb() -> prepare('SELECT * FROM story WHERE sto_id = :id');
     $stmt -> execute(array(
@@ -128,9 +108,9 @@ function editStory($id_story){
     ));
 }
 function addBlankSto(){
-    $stmt = getDb()->prepare("INSERT INTO story (sto_title,sto_description,sto_writer,sto_first_ch_id,sto_image) 
-    VALUE (? ,? ,? ,? ,? )");
-    $stmt->execute(array("New Story",null,$_SESSION['login'],null,null));
+    $stmt = getDb()->prepare("INSERT INTO story (sto_title,sto_description,sto_writer,sto_first_ch_id,sto_played,sto_finished) 
+    VALUE (? ,? ,? ,? ,? ,?)");
+    $stmt->execute(array("New Story",null,$_SESSION['login'],null,0,0));
     
 }
 function lastInsertStory(){
@@ -143,6 +123,24 @@ function getAllStoryForWriter($writer){
     $response = getDb() -> prepare($request);
     $response -> execute(array($writer));
     return $response -> fetchAll();
+}
+function upPlayedStory($idSto){
+    $story  = getStory($idSto);
+    $played = $story['sto_played'] +1;
+    $stmt = getDb()->prepare('UPDATE story SET sto_played = :played WHERE sto_id = :id');
+    $stmt -> execute(array(
+        'played' => $played,
+        'id' => $idSto
+    ));
+}
+function upfinishedStory($idSto){
+    $story  = getStory($idSto);
+    $played = $story['sto_finished'] + 1;
+    $stmt = getDb()->prepare('UPDATE story SET sto_finished = :played WHERE sto_id = :id');
+    $stmt -> execute(array(
+        'played' => $played,
+        'id' => $idSto
+    ));
 }
 //----------------------------------------------------
 //                      Chapter
@@ -245,6 +243,8 @@ function addNewGame($id_chapter,$id_user){
     $stmt = getDb()->prepare("INSERT INTO game (game_ch,game_user) 
     VALUES (?, ?)");
     $stmt->execute(array($id_chapter,$id_user));
+    $chapter = getCh($id_chapter);
+    upPlayedStory($chapter['ch_story_id']);
 }
 function editGame($gameId,$id_chapter){
     $stmt = getDb()->prepare("UPDATE game SET game_ch= :chapter WHERE game_id = :id");
@@ -261,9 +261,12 @@ function editLink($id_link,$next_ch){
     ));
 }
 function delGame($id){
+    $game = getGame($id);
+    $chapter = getCh($game['game_ch']);
     $requete = 'DELETE FROM game WHERE game_id=?';
     $response = getDb()->prepare($requete);
     $response->execute(array($id));
+    upfinishedStory($chapter['ch_story_id']);
 }
 function lastInsertGame(){
     $req = "SELECT MAX(game_id) FROM game";
@@ -276,4 +279,10 @@ function getAllGameForUser($user){
     $response = getDb() -> prepare($request);
     $response -> execute(array($idUser));
     return $response -> fetchAll();
+}
+function getGame($idGame){
+    $request = 'SELECT * FROM game WHERE game_id = ?';
+    $response = getDb() -> prepare($request);
+    $response -> execute(array($idGame));
+    return $response -> fetch();
 }
