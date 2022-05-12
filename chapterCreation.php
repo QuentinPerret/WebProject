@@ -52,7 +52,7 @@ $chapter = getCh($_GET['idCh']);?>
                         <fieldset>
                             <div class="mb-3">
                             <?php $links = getAlllink($chapter['ch_id']); 
-                            $tab = getAllChapter($_SESSION['story_id']);
+                            $tab = getAllChapter($chapter['ch_story_id']);
                             foreach($links as $key=>$link) { ?>
                             <label for='<?=$link['link_id'];?>'>Select the next chapter option </label>
                             <button type="submit" formaction="includes/delLink.php?idLink=<?=$link['link_id'];?>">
@@ -61,7 +61,7 @@ $chapter = getCh($_GET['idCh']);?>
                                                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
                                         </svg>
                                         </button>
-                            <select id="select" name='<?php echo($link['link_id']);?>' class="form-select" required>
+                            <select id="select" name='<?php echo($link['link_id']);?>' class="form-select" <?php if(isset($tab[1])){echo('required');}?>>
                                     <?php
                                     foreach($tab as $key=>$ligne){
                                         if($ligne['ch_id']!=$_GET['idCh']){?>

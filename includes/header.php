@@ -91,21 +91,16 @@
               loading="lazy" />
             <strong class="d-none d-sm-block ms-1" ><?php echo($_SESSION['login']); ?></strong>
           </a>
-        <li class="nav-item dropdown">
-          <a class="nav-link d-sm-flex align-items-sm-center" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
-            <span><i class="fa-solid fa-ranking-star"></i></span>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" href="profile.php#statistics">Statistics</a></li>
-            </ul>
-      </li>
       <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Actions
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
               <li><a class="dropdown-item" href="includes/logout.php">Logout</a></li>
-              <li><a class="dropdown-item" href="includes/addStory.php">Create a new strory</a></li>
+              <?php $user = getUser($_SESSION['login']);
+                if($user['usr_admin']==1){ ?>
+                <li><a class="dropdown-item" href="includes/addStory.php">Create a new strory</a></li>
+              <?php } ?>
             </ul>
           </li>
         

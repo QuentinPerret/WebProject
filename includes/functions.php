@@ -61,10 +61,11 @@ function addNewUser(){
     $login = escape($_POST['login']);
     $email = escape($_POST['email']);
     $password = escape($_POST['password']);
+    $admin = escape($_POST['admin']);
     // insert user into BD
-    $request  ="INSERT INTO user (usr_login,usr_email,usr_password) VALUES (?,?,?)";
+    $request  ="INSERT INTO user (usr_login,usr_email,usr_password,usr_admin) VALUES (?,?,?,?)";
     $req = getDb()->prepare($request);
-    $req -> execute(array($login, $email, $password));
+    $req -> execute(array($login, $email, $password, $admin));
     // connect the new user created
     $_SESSION['login'] = $login;
 }
@@ -74,6 +75,13 @@ function getIdfromLogin($writer){
     $response -> execute(array($writer));
     $user = $response -> fetch();
     return $user['usr_id'];
+}
+function getUser($user){
+    $stmt = getDb() -> prepare('SELECT * FROM user WHERE usr_login = :user');
+    $stmt -> execute(array(
+        'user' => $user
+    ));
+    return $stmt->fetch();
 }
 //----------------------------------------------------
 //                      Story

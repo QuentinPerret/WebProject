@@ -58,7 +58,7 @@ $story = getStory($_GET['stoId']);?>
                                 </tr>
                             </thead>
                             <tbody>
-                        <?php $tab=getAllChapter($_SESSION['story_id']);
+                        <?php $tab=getAllChapter($_GET['stoId']);
                         foreach($tab as $key=>$ligne){?>
                             <tr>
                                 <th scope="row"><a href ="chapterCreation.php?idCh=<?php echo($ligne['ch_id']);?>"><?php echo($ligne['ch_title'])?></a></th>
