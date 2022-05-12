@@ -23,7 +23,7 @@ $_SESSION['login']; ?>
                 <a role="button" href="storyCreation.php"><img src="Images/book.png" style="width: 400px; height: 400px; object-fit: cover; margin-bottom: 30px;" class="d-block mx-auto" alt="dragon"></a>
                 </div>
                 <div class="carousel-item">
-                <a role="button" href="#"><img src="Images/OurBooks.png" style="width: 400px; height: 400px; object-fit: cover; margin-left: -30px;" class="d-block mx-auto" alt="skull"></a>
+                <a role="button" href="#"><img src="Images/OurBooks.png" style="width: 400px; height: 400px; object-fit: cover; margin-left: -30px; margin-bottom: 30px;" class="d-block mx-auto" alt="skull"></a>
                 </div>
                 <div class="carousel-item">
                 <a role="button" href="profile.php"><img src="Images/statistics.png" style="width: 400px; height: 400px; object-fit: cover; margin-bottom: 30px;" class="d-block mx-auto" alt="druid"></a>
