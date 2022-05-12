@@ -61,7 +61,6 @@ $chapter = getCh($_GET['idCh']);?>
                                                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
                                         </svg>
                                         </button>
-                            <!-- "includes/delCh.php?id=<?php echo($ligne['ch_id']);?>&?stoId=<?php echo($story['sto_id']);?>">     -->
                             <select id="select" name='<?php echo($link['link_id']);?>' class="form-select">
                                     <?php
                                     foreach($tab as $key=>$ligne){
@@ -96,12 +95,21 @@ $chapter = getCh($_GET['idCh']);?>
                         </form>
                 </div>
                 </div>
-                
+                <div class="card mb-5">
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+                </div>      
             </div>  
 
 
         <?php require_once "includes/footer.php"; ?>
     </div>
+
     <?php require_once "includes/scripts.php"; ?>
 </body>
 

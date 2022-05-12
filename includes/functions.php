@@ -171,10 +171,10 @@ function getAllLink($id_chapter){
     return $response -> fetchAll();
 }
 
-function getAllStory($id_story){
-    $request = 'SELECT * FROM story WHERE link_ch = ?';
+function getAllStory($writer){
+    $request = 'SELECT * FROM story WHERE sto_writer = ?';
     $response = getDb() -> prepare($request);
-    $response -> execute(array($id_story));
+    $response -> execute(array($writer));
     return $response -> fetchAll();
 }
 
