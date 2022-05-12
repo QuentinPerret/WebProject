@@ -6,6 +6,8 @@ $chapter = getCh($chId);
 $stoId = $chapter['ch_story_id'];
 $story = getStory($stoId);
 $links = getAllLink($chId);
+$gameId =lastInsertGame()[0];
+editGame($gameId,$chId);
 ?>
 
 <!doctype html>
@@ -43,7 +45,8 @@ $links = getAllLink($chId);
                 </ul>
                 <div class="card-body">
                     <?php if($chapter['end_sto']==1)
-                    { ?>
+                    { 
+                    delGame($gameId);?>
                     <a class="btn btn-danger" role="button" href="index.php">Finish the story</a>
                     <?php } else { 
                         foreach($links as $key=>$link){ 

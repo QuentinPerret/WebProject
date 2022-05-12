@@ -1,5 +1,4 @@
 <?php
-
 // Connect to the database. Returns a PDO object
 function getDb() {
     // Local deployment
@@ -9,22 +8,34 @@ function getDb() {
     $db = "mystory"; 
     return new PDO("mysql:host=$server;dbname=$db;charset=utf8", "$username", "$password");
 }
-
 // Check if a user is connected
 function isUserConnected() {
     return isset($_SESSION['login']);
 }
-
+function isUserInDb(){
+    if (!empty($_POST['login']) and !empty($_POST['password'])) {
+        $login = $_POST['login'];
+        $password = $_POST['password'];
+        $stmt = getDb()->prepare('SELECT * FROM user WHERE usr_login=? AND usr_password=?');
+        $stmt->execute(array($login, $password));
+        if ($stmt->rowCount() == 1) {
+            // Authentication successful
+            $_SESSION['login'] = $login;
+            redirect("index.php");
+        }
+        else {
+            $error = "Utilisateur non reconnu";
+        }
+    }
+}
 // Redirect to a URL
 function redirect($url) {
     header("Location: $url");
 }
-
 // Escape a value to prevent XSS attacks
 function escape($value) {
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8', false);
 }
-
 function checkUser(){
 
     if(isset($_POST['login']) and isset($_POST['email']) and isset($_POST['password'])){
@@ -42,6 +53,9 @@ function checkUser(){
     }
     return (isset($_POST['login']) or isset($_POST['email']) or isset($_POST['password']));
 }
+//----------------------------------------------------
+//                      User
+//----------------------------------------------------
 // Add a new user in the DataBase
 function addNewUser(){
     $login = escape($_POST['login']);
@@ -54,19 +68,16 @@ function addNewUser(){
     // connect the new user created
     $_SESSION['login'] = $login;
 }
-
-function getAllChapter($id_story){
-    $request = 'SELECT * FROM chapter WHERE ch_story_id = ?';
+function getIdfromLogin($writer){
+    $request = 'SELECT * FROM user WHERE usr_login = ?';
     $response = getDb() -> prepare($request);
-    $response -> execute(array($id_story));
-    return $response -> fetchAll();
+    $response -> execute(array($writer));
+    $user = $response -> fetch();
+    return $user['usr_id'];
 }
-function getAllChapterPublic(){
-    $request = 'SELECT * FROM chapter'; //where sto_public ==1
-    $response = getDb() -> query($request);
-    return $response -> fetchAll();
-}
-// Add a new story in the DataBase
+//----------------------------------------------------
+//                      Story
+//----------------------------------------------------
 function addNewStory(){
     $title = escape($_POST['title']);
     $description = escape($_POST['description']);
@@ -87,58 +98,14 @@ function addNewStory(){
         $stmt->execute(array($title, $description, $writer, $firstCh, $image));
         redirect("editStory.php");
 }
-//Create a new chapter with nothing in 
-function addBlankCh() {
-    //prepare request 
-    $stmt = getDb()->prepare("INSERT INTO chapter (ch_story_id,ch_title,ch_story,end_sto) 
-    VALUES (?, ?, ?, ?)");
-    //set all values
-    $ch_story_id = 1;
-    $ch_title = "blank chapter";
-    $ch_story = NULL;
-    $end = false;
-    //insert new row in db
-    $stmt->execute(array($ch_story_id,$ch_title,$ch_story,$end));
-}
-
-function addNewLink($id_chapter){
-    $stmt = getDb()->prepare("INSERT INTO link (link_ch,link_next) 
-    VALUES (?, ?)");
-    $stmt->execute(array($id_chapter,null));
-}
-
-function addBlankSto(){
-    $stmt = getDb()->prepare("INSERT INTO story (sto_title,sto_description,sto_writer,sto_first_ch_id,sto_image) 
-    VALUE (? ,? ,? ,? ,? )");
-    $stmt->execute(array("New Story",null,$_SESSION['login'],null,null));
-    
-}
-function lastInsertStory(){
-    $req = "SELECT MAX(sto_id) FROM story";
-    $res = getDb() -> query($req);
-    return $res ->fetch();
-}
-function editLink($id_link,$next_ch){
-    $stmt = getDb()->prepare("UPDATE link SET link_next= :next WHERE link_id = :id");
-    $stmt->execute(array(
-        'next' => $next_ch,
-        'id' => $id_link
+function getStory($id_story){
+    $stmt = getDb() -> prepare('SELECT * FROM story WHERE sto_id = :id');
+    $stmt -> execute(array(
+        'id' => $id_story
     ));
+    $ligne = $stmt->fetch();
+    return $ligne;
 }
-
-function delCh($id){
-    $requete = 'DELETE FROM chapter WHERE ch_id=?';
-    $response = getDb()->prepare($requete);
-    $response->execute(array($id));
-}
-
-function delLink($id){
-    $requete = 'DELETE FROM link WHERE link_id=?';
-    $response = getDb()->prepare($requete);
-    $response->execute(array($id));
-}
-
-// Add a new Chapter in the DataBase
 function editStory($id_story){
     $title = escape($_POST['title']);
     $description = escape($_POST['description']);
@@ -152,23 +119,60 @@ function editStory($id_story){
         'id' => $id_story,
     ));
 }
-
-function getStory($id_story){
-    $stmt = getDb() -> prepare('SELECT * FROM story WHERE sto_id = :id');
-    $stmt -> execute(array(
-        'id' => $id_story
-    ));
-    $ligne = $stmt->fetch();
-    return $ligne;
+function addBlankSto(){
+    $stmt = getDb()->prepare("INSERT INTO story (sto_title,sto_description,sto_writer,sto_first_ch_id,sto_image) 
+    VALUE (? ,? ,? ,? ,? )");
+    $stmt->execute(array("New Story",null,$_SESSION['login'],null,null));
+    
 }
-
+function lastInsertStory(){
+    $req = "SELECT MAX(sto_id) FROM story";
+    $res = getDb() -> query($req);
+    return $res ->fetch();
+}
+function getAllStoryForWriter($writer){
+    $request = 'SELECT * FROM story WHERE sto_writer = ?';
+    $response = getDb() -> prepare($request);
+    $response -> execute(array($writer));
+    return $response -> fetchAll();
+}
+//----------------------------------------------------
+//                      Chapter
+//----------------------------------------------------
+function addBlankCh() {
+    //prepare request 
+    $stmt = getDb()->prepare("INSERT INTO chapter (ch_story_id,ch_title,ch_story,end_sto) 
+    VALUES (?, ?, ?, ?)");
+    //set all values
+    $ch_story_id = 1;
+    $ch_title = "blank chapter";
+    $ch_story = NULL;
+    $end = false;
+    //insert new row in db
+    $stmt->execute(array($ch_story_id,$ch_title,$ch_story,$end));
+}
+function getAllChapter($id_story){
+    $request = 'SELECT * FROM chapter WHERE ch_story_id = ?';
+    $response = getDb() -> prepare($request);
+    $response -> execute(array($id_story));
+    return $response -> fetchAll();
+}
+function getAllChapterPublic(){
+    $request = 'SELECT * FROM chapter'; //where sto_public ==1
+    $response = getDb() -> query($request);
+    return $response -> fetchAll();
+}
+function delCh($id){
+    $requete = 'DELETE FROM chapter WHERE ch_id=?';
+    $response = getDb()->prepare($requete);
+    $response->execute(array($id));
+}
 function getCh($id_chapter){
     $stmt = getDb() -> prepare('SELECT * FROM chapter WHERE ch_id = :id');
     $stmt -> execute(array('id' => $id_chapter));
     $ligne = $stmt->fetch();
     return $ligne;
 }
-
 function editCh($id_chapter){
     $title = escape($_POST['title']);
     $story = escape($_POST['story']);
@@ -181,27 +185,26 @@ function editCh($id_chapter){
         'endSto' => $endSto,
         'id' => $id_chapter
     ));
+    checkIsEndCh($id_chapter);
 }
-
-function getAllLink($id_chapter){
-    $request = 'SELECT * FROM link WHERE link_ch = ?';
-    $response = getDb() -> prepare($request);
-    $response -> execute(array($id_chapter));
-    return $response -> fetchAll();
+function checkIsEndCh($id_chapter){
+    $links = getAllLink($id_chapter);
+    if(!isset($links[0])){
+        $stmt = getDb()->prepare('UPDATE chapter SET end_sto=1  WHERE ch_id = :id');
+        $stmt -> execute(array('id'=> $id_chapter));
+    }
+    else{
+        $stmt = getDb()->prepare('UPDATE chapter SET end_sto=0  WHERE ch_id = :id');
+        $stmt -> execute(array('id'=> $id_chapter));
+    }
 }
-
-function getAllStoryForWriter($writer){
-    $request = 'SELECT * FROM story WHERE sto_writer = ?';
-    $response = getDb() -> prepare($request);
-    $response -> execute(array($writer));
-    return $response -> fetchAll();
-}
-
-function getLink($id_link){
-    $request = 'SELECT * FROM link WHERE link_id = ?';
-    $response = getDb() -> prepare($request);
-    $response -> execute(array($id_link));
-    return $response -> fetch();
+//----------------------------------------------------
+//                      Link
+//----------------------------------------------------
+function addNewLink($id_chapter){
+    $stmt = getDb()->prepare("INSERT INTO link (link_ch,link_next) 
+    VALUES (?, ?)");
+    $stmt->execute(array($id_chapter,null));
 }
 function editAllLink($idCh){
     $chapter = getCh($idCh);
@@ -210,19 +213,52 @@ function editAllLink($idCh){
         editLink($ligne['link_id'],$_POST[$ligne['link_id']]);
     }
 }
-function isUserInDb(){
-    if (!empty($_POST['login']) and !empty($_POST['password'])) {
-        $login = $_POST['login'];
-        $password = $_POST['password'];
-        $stmt = getDb()->prepare('SELECT * FROM user WHERE usr_login=? AND usr_password=?');
-        $stmt->execute(array($login, $password));
-        if ($stmt->rowCount() == 1) {
-            // Authentication successful
-            $_SESSION['login'] = $login;
-            redirect("index.php");
-        }
-        else {
-            $error = "Utilisateur non reconnu";
-        }
-    }
+function getLink($id_link){
+    $request = 'SELECT * FROM link WHERE link_id = ?';
+    $response = getDb() -> prepare($request);
+    $response -> execute(array($id_link));
+    return $response -> fetch();
+}
+function delLink($id){
+    $requete = 'DELETE FROM link WHERE link_id=?';
+    $response = getDb()->prepare($requete);
+    $response->execute(array($id));
+}
+function getAllLink($id_chapter){
+    $request = 'SELECT * FROM link WHERE link_ch = ?';
+    $response = getDb() -> prepare($request);
+    $response -> execute(array($id_chapter));
+    return $response -> fetchAll();
+}
+//----------------------------------------------------
+//                      Game
+//----------------------------------------------------
+function addNewGame($id_chapter,$id_user){
+    $stmt = getDb()->prepare("INSERT INTO game (game_ch,game_user) 
+    VALUES (?, ?)");
+    $stmt->execute(array($id_chapter,$id_user));
+}
+function editGame($gameId,$id_chapter){
+    $stmt = getDb()->prepare("UPDATE game SET game_ch= :chapter WHERE game_id = :id");
+    $stmt->execute(array(
+        'chapter' => $gameId,
+        'id' => $id_chapter
+    ));
+}
+function editLink($id_link,$next_ch){
+    $stmt = getDb()->prepare("UPDATE link SET link_next= :next WHERE link_id = :id");
+    $stmt->execute(array(
+        'next' => $next_ch,
+        'id' => $id_link
+    ));
+}
+function delGame($id){
+    $requete = 'DELETE FROM game WHERE game_id=?';
+    $response = getDb()->prepare($requete);
+    $response->execute(array($id));
+}
+function lastInsertGame(){
+    $req = "SELECT MAX(game_id) FROM game";
+    $res = getDb() -> query($req);
+    return $res ->fetch();
 }

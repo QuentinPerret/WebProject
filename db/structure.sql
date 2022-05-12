@@ -2,6 +2,7 @@ drop table if exists user;
 drop table if exists story;
 drop table if exists chapter;
 drop table if exists link;
+drop table if exists game;
 
 create table user (
     usr_id integer not null primary key auto_increment,
@@ -31,4 +32,10 @@ create table link(
     link_id integer not null primary key auto_increment,
     link_ch integer not null,
     link_next integer
+)engine=innodb character set utf8 collate utf8_unicode_ci;
+
+create table game(
+    game_id integer not null primary key auto_increment,
+    game_ch integer not null,
+    game_user integer not null
 )engine=innodb character set utf8 collate utf8_unicode_ci;
