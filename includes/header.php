@@ -23,11 +23,67 @@
         </form> -->
       </div>
       <!-- Left elements -->
+      <ul class="navbar-nav flex-row d-none d-md-flex">
+      <li class="nav-item dropdown" >
+        <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+          <span><i class="fa-solid fa-hat-wizard fa-3x" style="width: 75px;"></i></span>
+          <!-- <span class="badge rounded-pill badge-notification bg-primary">1</span> -->
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;">
+            <li><a class="dropdown-item" style="height: 200px;" href="#"><?php echo(getLine(1)["sto_description"])?></a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="stories.php?story=Wizard">Débuter l'histoire</a></li>
+        </ul>
 
+      <li class="nav-item dropdown">
+        <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+          <span><i class="fa-brands fa-d-and-d fa-3x" style="width: 75px;"></i></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;">
+            <li><a class="dropdown-item" style="height: 200px;" href="#"><?php echo(getLine(2)["sto_description"])?></a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+          <span><i class="fa-solid fa-dungeon fa-3x" style="width: 75px;"></i></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;">
+            <li><a class="dropdown-item" style="height: 200px;" href="#"><?php echo(getLine(3)["sto_description"])?></a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+          <span><i class="fa-solid fa-skull-crossbones fa-3x" style="width: 75px;"></i></i></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;">
+            <li><a class="dropdown-item" style="height: 200px;" href="#"><?php echo(getLine(4)["sto_description"])?></a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+          <span><i class="fa-solid fa-book-skull fa-3x" style="width: 75px;"></i></span>
+          <!-- <span class="badge rounded-pill badge-notification bg-primary">2</span> -->
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;" >
+            <li><a class="dropdown-item" style="height: 200px;" href="#"><?php echo(getLine(5)["sto_description"])?></a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
+        </ul>
+      </li>
+    </ul>
 
       <!-- Right elements (connexion)-->
       <?php if(isUserConnected()){ ?>
-      <ul class="navbar-nav flex-row">
+      <ul class="navbar-nav flex-row" style="font-size: 20px">
           
         <li class="nav-item dropdown">
           <a class="nav-link d-sm-flex align-items-sm-center" role="button" aria-expanded="false" href="profile.php">

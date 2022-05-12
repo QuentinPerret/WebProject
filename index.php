@@ -26,7 +26,7 @@ $_SESSION['login']; ?>
                 <a role="button" href="#"><img src="Images/OurBooks.png" style="width: 400px; height: 400px; object-fit: cover; margin-left: -30px;" class="d-block mx-auto" alt="skull"></a>
                 </div>
                 <div class="carousel-item">
-                <a role="button" href="stories.php"><img src="Images/Caroussel/druid.png" style="width: 400px; height: 400px; object-fit: cover; margin-bottom: 30px;" class="d-block mx-auto" alt="druid"></a>
+                <a role="button" href="profile.php"><img src="Images/statistics.png" style="width: 400px; height: 400px; object-fit: cover; margin-bottom: 30px;" class="d-block mx-auto" alt="druid"></a>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -38,6 +38,7 @@ $_SESSION['login']; ?>
                 <span class="visually-hidden">Next</span>
             </button>
             </div>
+            
 </div>
         <?php require_once "includes/footer.php"; ?>
     </div>
