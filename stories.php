@@ -42,14 +42,15 @@ $links = getAllLink($chId);
                 <ul class="list-group list-group-flush">
                 </ul>
                 <div class="card-body">
-                    <?php foreach($links as $key=>$link){ 
+                    <?php if($chapter['end_sto']==1)
+                    { ?>
+                    <a class="btn btn-danger" role="button" href="index.php">Finish the story</a>
+                    <?php } else { 
+                        foreach($links as $key=>$link){ 
                         $nextCh = getCh($link['link_next']);
                         ?>
                         <a href="stories.php?chId=<?=$nextCh['ch_id']?>" class="card-link"><?=$nextCh['ch_title']?></a>
-                    <?php } ?>
-                </div>
-                <div class="card-footer text-muted">
-                    2 days ago
+                    <?php } } ?>
                 </div>
                 </div>
         </div>
