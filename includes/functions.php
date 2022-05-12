@@ -262,3 +262,10 @@ function lastInsertGame(){
     $res = getDb() -> query($req);
     return $res ->fetch();
 }
+function getAllGameForUser($user){
+    $idUser = getIdfromLogin($user);
+    $request = 'SELECT * FROM game WHERE game_user = ?';
+    $response = getDb() -> prepare($request);
+    $response -> execute(array($idUser));
+    return $response -> fetchAll();
+}

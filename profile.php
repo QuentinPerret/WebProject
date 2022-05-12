@@ -20,7 +20,18 @@ session_start();
                     ?> <a href="storyCreation.php?stoId=<?=$story['sto_id']?>"><?=$story['sto_title']?></a>
                 <?php } ?>
             </div>
-
+            <div class="container d-flex justify-content-center border">
+                <legend>Reprendre une histoire :</legend>
+                <?php 
+                require_once 'includes/functions.php';
+                $games = getAllGameForUser($_SESSION['login']);
+                foreach($games as $key=> $game){
+                    $idCh = $game['game_ch'];
+                    $chapter = getCh($idCh);
+                    $story = getStory($chapter['ch_story_id']);
+                    ?> <a href="stories.php?chId=<?=$game['game_ch']?>"><?=$story['sto_title']?>: <?=$chapter['ch_title']?></a>
+                <?php } ?>
+            </div>
         </div>
 </div>
 
