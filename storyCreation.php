@@ -15,19 +15,24 @@ $story = getStory($_GET['stoId']);?>
                 <div class="card mb-3" style="margin-right: 50px;">
                 <h3 class="card-header">Titre de l'histoire</h3>
                 <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                <div class="container mt-5 d-flex justify-content-center" id="statistics" style="margin-bottom: 30px;">
+                    <div class="card p-3">
+                            <div class="d-flex align-items-center">
+                                <div class="image"> <img src="Images/statistics.png" class="rounded" width="155"> </div>
+                                <div class="ml-3 w-100">
+                                    <h4 class="mb-0 mt-0"><?php echo($_SESSION['login']); ?>'s stat</h4> <span></span>
+                                    <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                                        <div class="d-flex flex-column"> <span class="articles">Games played</span> <span class="number1">100</span> </div>
+                                        <div class="d-flex flex-column"> <span class="followers">Games won</span> <span class="number2">20</span> </div>
+                                        <div class="d-flex flex-column"> <span class="rating">Deaths</span> <span class="number3">2</span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="stories.php?chId=<?=$story['sto_first_ch_id']?>"><button class="btn btn-danger w-50" style="margin-left: 100px" >Jouer cette histoire</button></a> 
+
                 </div>
-                <img src="Images/writer.jpg" style="width: 400px; height: 400px; object-fit: cover;" class="d-block mx-auto" alt="writer">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                
-                <div class="card-body">
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
-                </div>
-                <a href="stories.php?chId=<?=$story['sto_first_ch_id']?>"><button class="btn btn-danger" >Jouer cette histoire</button></a> 
                 </div>
 
 
