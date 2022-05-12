@@ -105,7 +105,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
               <li><a class="dropdown-item" href="includes/logout.php">Logout</a></li>
-              <li><a class="dropdown-item" href="storyCreation.php">Create a new strory</a></li>
+              <li><a class="dropdown-item" href="includes/addStory.php">Create a new strory</a></li>
             </ul>
           </li>
         
