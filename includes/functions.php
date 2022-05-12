@@ -61,6 +61,12 @@ function getAllChapter($id_story){
     $response -> execute(array($id_story));
     return $response -> fetchAll();
 }
+function getLine($id_story){
+    $requete = "SELECT sto_description FROM story WHERE sto_id = ?";
+    $response = getDb() -> prepare($requete);
+    $response -> execute(array($id_story));
+    return $response -> fetch();
+}
 // Add a new story in the DataBase
 function addNewStory(){
     $title = escape($_POST['title']);
