@@ -142,6 +142,19 @@ function upfinishedStory($idSto){
         'id' => $idSto
     ));
 }
+function delStory($idSto){
+    $requete = 'DELETE FROM story WHERE sto_id=?';
+    $response = getDb()->prepare($requete);
+    $response->execute(array($idSto));
+
+    $requete = 'DELETE FROM chapter WHERE ch_story_id=?';
+    $response = getDb()->prepare($requete);
+    $response->execute(array($idSto));
+
+    $requete = 'DELETE FROM game WHERE game_ch=?';
+    $response = getDb()->prepare($requete);
+    $response->execute(array($idSto));
+}
 //----------------------------------------------------
 //                      Chapter
 //----------------------------------------------------

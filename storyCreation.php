@@ -30,7 +30,7 @@ $story = getStory($_GET['stoId']);?>
                         </div>
                     </div>
                     <a href="includes/newGame.php?idCh=<?=$story['sto_first_ch_id']?>"><button class="btn btn-danger w-50" style="margin-left: 100px" >Jouer cette histoire</button></a> 
-
+                    <a href="includes/delStory.php?idSto=<?=$story['sto_id']?>"><button class="btn btn-danger w-50" style="margin-left: 100px;">Supprimer cette histoire</button></a>
                 </div>
                 </div>
 
