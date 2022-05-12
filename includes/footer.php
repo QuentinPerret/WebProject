@@ -49,8 +49,8 @@
           <p><i class="fa fa-home me-3"></i> 109 avenue Roul, Talence</p>
           <p>
             <i class="fa fa-envelope me-3"></i>
-            qperret@ensc.fr
-            aporte005@ensc.fr
+            <a href="mailto:qperret@ensc.fr">qperret@ensc.fr</a>
+            <a href="mailto:aporte005@ensc.fr">aporte005@ensc.fr</a>
           </p>
         </div>
         <!-- Grid column -->
