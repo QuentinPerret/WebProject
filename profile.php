@@ -17,7 +17,7 @@ session_start();
                 require_once 'includes/functions.php';
                 $sto = getAllStoryForWriter($_SESSION['login']);
                 foreach($sto as $key=> $story){
-                    ?> <a href="storyCreation.php?stoId="<?= $story['sto_id']?>><?=$story['sto_title']?></a>
+                    ?> <a href="storyCreation.php?stoId=<?=$story['sto_id']?>"><?=$story['sto_title']?></a>
                 <?php } ?>
             </div>
 
