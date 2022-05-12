@@ -31,7 +31,7 @@ session_start();
             <fieldset <?php if(!isUserConnected()){ ?>disabled <?php } ?>>
                 <legend>Select the story you want</legend>
                 <div class="mb-3">
-                <label for="disabledSelect" class="form-label">Disabled select menu</label>
+                <label for="disabledSelect" class="form-label">Stat</label>
                 <select id="disabledSelect" class="form-select">
                     <option><?php echo($_SESSION['story_id']) ?></option>
                 </select>
@@ -46,6 +46,7 @@ session_start();
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </fieldset>
+            <?php ?>
             </form>
             <div class="container mt-5 d-flex justify-content-center">
                 <div class="card p-3">

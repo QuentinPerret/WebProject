@@ -22,8 +22,9 @@ session_start();?>
             <span class="page"></span>
             <span class="cover turn"></span>
         </div>
+        
         <div class="card mb-3" style="margin-right: 50px;">
-                <h3 class="card-header">Titre de l'histoire</h3>
+                <h3 class="card-header"> <?php if(isset($_GET['story'])) { ?>Titre de l'histoire<?php } ?></h3>
                 <div class="card-body">
                     <h5 class="card-title">The current chapter</h5>
                     <h6 class="card-subtitle text-muted">With ?? character</h6>
@@ -33,13 +34,11 @@ session_start();?>
                     <p class="card-text">The story</p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">The content of the chapter</li>
                 </ul>
                 <div class="card-body">
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <a href="#" class="card-link">Chapter ??</a>
+                    <a href="#" class="card-link">Chapter ??</a>
                 </div>
                 <div class="card-footer text-muted">
                     2 days ago
