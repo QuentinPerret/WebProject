@@ -107,6 +107,17 @@ function addNewLink($id_chapter){
     $stmt->execute(array($id_chapter,null));
 }
 
+function addBlankSto(){
+    $stmt = getDb()->prepare("INSERT INTO story (sto_title,sto_description,sto_writer,sto_first_ch_id,sto_image) 
+    VALUE (? ,? ,? ,? ,? )");
+    $stmt->execute(array("New Story",null,$_SESSION['login'],null,null));
+    
+}
+function lastInsertStory(){
+    $req = "SELECT MAX('sto_id') FROM story";
+    $res = getDb() -> query($req);
+    return $res ->fetch();
+}
 function editLink($id_link,$next_ch){
     $stmt = getDb()->prepare("UPDATE link SET link_next= :next WHERE link_id = :id");
     $stmt->execute(array(

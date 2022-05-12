@@ -13,7 +13,7 @@ create table user (
 create table story(
     sto_id integer not null primary key auto_increment,
     sto_title varchar(100) not null,
-    sto_description varchar(2000) not null,
+    sto_description varchar(2000),
     sto_writer varchar(150) not null,
     sto_first_ch_id integer,
     sto_image varchar(150)

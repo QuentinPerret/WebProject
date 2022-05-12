@@ -61,7 +61,7 @@ $chapter = getCh($_GET['idCh']);?>
                                                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
                                         </svg>
                                         </button>
-                            <select id="select" name='<?php echo($link['link_id']);?>' class="form-select">
+                            <select id="select" name='<?php echo($link['link_id']);?>' class="form-select" required>
                                     <?php
                                     foreach($tab as $key=>$ligne){
                                         if($ligne['ch_id']!=$_GET['idCh']){?>
