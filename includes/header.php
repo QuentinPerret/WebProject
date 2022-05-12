@@ -87,19 +87,9 @@
       <!-- Right elements (connexion)-->
       <?php if(isUserConnected()){ ?>
       <ul class="navbar-nav flex-row">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Details
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li><a class="dropdown-item" href="profile.php">See your profile</a></li>
-              <li><a class="dropdown-item" href="includes/logout.php">Logout</a></li>
-              <li><a class="dropdown-item" href="storyCreation.php">Create a new strory</a></li>
-              <li><a class="dropdown-item" href="includes/addCh.php">Add Ch</a></li>
-            </ul>
-          </li>
+          
         <li class="nav-item dropdown">
-          <a class="nav-link d-sm-flex align-items-sm-center" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
+          <a class="nav-link d-sm-flex align-items-sm-center" role="button" aria-expanded="false" href="profile.php">
             <img src="Images/pp.png" class="rounded-circle" height="22" alt="profile"
               loading="lazy" />
             <strong class="d-none d-sm-block ms-1" ><?php echo($_SESSION['login']); ?></strong>
@@ -112,6 +102,15 @@
               <li><a class="dropdown-item" href="profile.php#statistics">Statistics</a></li>
             </ul>
       </li>
+      <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Actions
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><a class="dropdown-item" href="includes/logout.php">Logout</a></li>
+              <li><a class="dropdown-item" href="storyCreation.php">Create a new strory</a></li>
+            </ul>
+          </li>
         
       </ul>
       <!-- Right elements if connected -->

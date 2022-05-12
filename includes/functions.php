@@ -171,6 +171,13 @@ function getAllLink($id_chapter){
     return $response -> fetchAll();
 }
 
+function getAllStory($id_story){
+    $request = 'SELECT * FROM story WHERE link_ch = ?';
+    $response = getDb() -> prepare($request);
+    $response -> execute(array($id_story));
+    return $response -> fetchAll();
+}
+
 function getLink($id_link){
     $request = 'SELECT * FROM link WHERE link_id = ?';
     $response = getDb() -> prepare($request);
