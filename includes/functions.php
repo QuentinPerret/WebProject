@@ -114,7 +114,7 @@ function addBlankSto(){
     
 }
 function lastInsertStory(){
-    $req = "SELECT MAX('sto_id') FROM story";
+    $req = "SELECT MAX(sto_id) FROM story";
     $res = getDb() -> query($req);
     return $res ->fetch();
 }
