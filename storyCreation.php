@@ -14,6 +14,7 @@ $story = getStory($_SESSION['story_id']);?>
 <body>
     <div class="container-fluid ">
         <?php require_once "includes/header.php"; ?>
+
             <div class="container d-flex justify-content-center" style="margin-top: 100px;">
                 <div class="card mb-3" style="margin-right: 50px;">
                 <h3 class="card-header">Titre de l'histoire</h3>
@@ -25,16 +26,15 @@ $story = getStory($_SESSION['story_id']);?>
                 <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                </ul>
+                
                 <div class="card-body">
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                 </div>
+                <a href="stories.php?chId=<?=$story['sto_first_ch_id']?>"><button class="btn btn-danger" >Jouer cette histoire</button></a> 
                 </div>
+
+
                 <div class="card mb-5"style="margin-right: 50px;"   >
                 <div class="card-body">
                     <h4 class="card-title">Story Creator</h4>
@@ -71,13 +71,25 @@ $story = getStory($_SESSION['story_id']);?>
                             </tr>
 
                         <?php } ?>
-                            </tbody>
-                            </table>
+                        </tbody>
+                        </table>
+                        <label for='firstCh'>Select the first chapter od your story</label>
+                            <select id="select" name='firstCh' class="form-select">
+                                    <?php
+                                    foreach($tab as $key=>$ligne){ ?>
+                                            <option value='<?=$ligne['ch_id']?>' 
+                                                    <?php if($ligne['ch_id'] == $story['sto_first_ch_id'])
+                                                        { echo('selected');}?> >
+                                                        <?=$ligne['ch_title']?> 
+                                            </option>
+                                <?php } ?>
+                                </select>
+
                             <div class="form-group" style="width:100px;" >
-                                <button type="submit" class="btn btn-primary" formaction="includes/editStory.php?stoId= <?php echo($story['sto_id']);?>">Submit</button>
+                                <button type="submit" class="btn btn-primary" formaction="includes/editStory.php?stoId=<?php echo($story['sto_id']);?>">Submit</button>
                             </div>
                             <div class="form-group" style="width:100px;" >
-                                <button type="submit" class="btn btn-danger" formaction="includes/addCh.php?stoId= <?php echo($story['sto_id']);?>">Ajouter un Chapitre</a>
+                                <button type="submit" class="btn btn-danger" formaction="includes/addCh.php?stoId=<?php echo($story['sto_id']);?>">Ajouter un Chapitre</a>
                             </div>
                         </form>
                 </div>
