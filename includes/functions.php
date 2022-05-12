@@ -132,12 +132,14 @@ function delLink($id){
 function editStory($id_story){
     $title = escape($_POST['title']);
     $description = escape($_POST['description']);
+    $firstCh = escape($_POST['firstCh']);
     //update chapter into BD
-    $stmt = getDb()->prepare('UPDATE story SET sto_title = :title , sto_description = :description WHERE sto_id = :id');
+    $stmt = getDb()->prepare('UPDATE story SET sto_title = :title , sto_description = :description , sto_first_ch_id = :firstCh WHERE sto_id = :id');
     $stmt -> execute(array(
         'title' => $title,
         'description' => $description,
-        'id' => $id_story
+        'firstCh' => $firstCh,
+        'id' => $id_story,
     ));
 }
 
@@ -177,7 +179,7 @@ function getAllLink($id_chapter){
     return $response -> fetchAll();
 }
 
-function getAllStory($writer){
+function getAllStoryForWriter($writer){
     $request = 'SELECT * FROM story WHERE sto_writer = ?';
     $response = getDb() -> prepare($request);
     $response -> execute(array($writer));

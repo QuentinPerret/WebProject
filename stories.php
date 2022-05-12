@@ -1,5 +1,6 @@
 <?php
-session_start();?>
+session_start();
+?>
 
 <!doctype html>
 <html>
@@ -24,7 +25,7 @@ session_start();?>
         </div>
         
         <div class="card mb-3" style="margin-right: 50px;">
-                <h3 class="card-header"> <?php if(isset($_GET['story'])) { ?>Titre de l'histoire<?php } ?></h3>
+                <h3 class="card-header"></h3>
                 <div class="card-body">
                     <h5 class="card-title">The current chapter</h5>
                     <h6 class="card-subtitle text-muted">With ?? character</h6>
