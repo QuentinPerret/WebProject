@@ -1,5 +1,11 @@
 <?php
 session_start();
+require_once 'includes/functions.php';
+$chId = $_GET['chId'];
+$chapter = getCh($chId);
+$stoId = $chapter['ch_story_id'];
+$story = getStory($stoId);
+$links = getAllLink($chId);
 ?>
 
 <!doctype html>
@@ -25,21 +31,22 @@ session_start();
         </div>
         
         <div class="card mb-3" style="margin-right: 50px;">
-                <h3 class="card-header"></h3>
+                <h3 class="card-header"><?= $story['sto_title']?></h3>
                 <div class="card-body">
-                    <h5 class="card-title">The current chapter</h5>
-                    <h6 class="card-subtitle text-muted">With ?? character</h6>
+                    <h5 class="card-title"><?= $chapter['ch_title']?></h5>
                 </div>
                 
                 <div class="card-body">
-                    <p class="card-text">The story</p>
+                    <p class="card-text"><?= $chapter['ch_story']?></p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">The content of the chapter</li>
                 </ul>
                 <div class="card-body">
-                    <a href="#" class="card-link">Chapter ??</a>
-                    <a href="#" class="card-link">Chapter ??</a>
+                    <?php foreach($links as $key=>$link){ 
+                        $nextCh = getCh($link['link_next']);
+                        ?>
+                        <a href="stories.php?chId=<?=$nextCh['ch_id']?>" class="card-link"><?=$nextCh['ch_title']?></a>
+                    <?php } ?>
                 </div>
                 <div class="card-footer text-muted">
                     2 days ago
