@@ -20,13 +20,13 @@ $_SESSION['login']; ?>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <a role="button" href="<?php if(isUserConnected()) echo('storyCreation.php'); else echo('signin.php') ?>"><img src="Images/book.png" style="width: 400px; height: 400px; object-fit: cover; margin-bottom: 30px;" class="d-block mx-auto" alt="dragon"></a>
+                <a role="button" href="<?php if(isUserConnected()) echo('includes/addStory.php'); else echo('signin.php') ?>"><img src="Images/book.png" style="width: 400px; height: 400px; object-fit: cover; margin-bottom: 30px;" class="d-block mx-auto" alt="dragon"></a>
                 </div>
                 <div class="carousel-item">
                 <a role="button" href="#"><img src="Images/OurBooks.png" style="width: 400px; height: 400px; object-fit: cover; margin-left: -30px; margin-bottom: 30px;" class="d-block mx-auto" alt="skull"></a>
                 </div>
                 <div class="carousel-item">
-                <a role="button" href="profile.php"><img src="Images/statistics.png" style="width: 400px; height: 400px; object-fit: cover; margin-bottom: 30px;" class="d-block mx-auto" alt="druid"></a>
+                <a role="button" href="#"><img src="Images/statistics.png" style="width: 400px; height: 400px; object-fit: cover; margin-bottom: 30px;" class="d-block mx-auto" alt="druid"></a>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

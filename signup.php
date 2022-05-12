@@ -55,6 +55,12 @@ session_start();
                     </div>
                 </div>  
             </div>
+            <div class="form-group row">
+                <div class="form-check">
+                    <label for="endSto">Admin ?</label>
+                    <input class="form-check-input" type="checkbox" id="admin" name="admin" value="1">
+                </div>
+            </div>
             <div class="col-sm-7"></div>
             <div class="form-group row" style="width:100px;" >
                 <button type="submit" class="btn btn-danger">Submit</button>
