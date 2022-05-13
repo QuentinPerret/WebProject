@@ -6,7 +6,9 @@ function getDb() {
     $username = "qperret";
     $password = "passworddb";
     $db = "qperret"; 
-    return new PDO("mysql:host=$server;dbname=$db;charset=utf8", "$username", "$password",array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    return new PDO("mysql:host=$server;dbname=$db;charset=utf8",
+    $username, $password,
+    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     
 }
 // Check if a user is connected
