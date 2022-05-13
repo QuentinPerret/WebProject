@@ -2,10 +2,10 @@
 // Connect to the database. Returns a PDO object
 function getDb() {
     // Local deployment
-    $server = "localhost";
-    $username = "qperret";
-    $password = "passworddb";
-    $db = "qperret"; 
+    $server = "localhost"; //$server = "server";
+    $username = "qperret"; //$username = "mystory_user";
+    $password = "passworddb"; //$password = "secret";
+    $db = "qperret"; //$db = "mystory";
     return new PDO("mysql:host=$server;dbname=$db;charset=utf8",
     $username, $password,
     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
