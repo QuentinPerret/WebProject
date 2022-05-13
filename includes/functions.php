@@ -3,10 +3,11 @@
 function getDb() {
     // Local deployment
     $server = "localhost";
-    $username = "mystory_user";
-    $password = "secret";
-    $db = "mystory"; 
-    return new PDO("mysql:host=$server;dbname=$db;charset=utf8", "$username", "$password");
+    $username = "qperret";
+    $password = "passworddb";
+    $db = "qperret"; 
+    return new PDO("mysql:host=$server;dbname=$db;charset=utf8", "$username", "$password",array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    
 }
 // Check if a user is connected
 function isUserConnected() {

@@ -1,3 +1,4 @@
+
 <?php require_once "includes/functions.php"; ?>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-danger">
