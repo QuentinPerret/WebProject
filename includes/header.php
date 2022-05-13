@@ -30,7 +30,7 @@
           <!-- <span class="badge rounded-pill badge-notification bg-primary">1</span> -->
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;">
-            <li><a class="dropdown-item" style="height: 200px;" href="#"><?=getStory(1)["sto_description"]?></a></li>
+            <li><a class="dropdown-item" style="height: 200px; word-wrap: break-word; white-space: normal;" href="#"><?=getStory(1)["sto_description"]?></a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="stories.php?chId=<?=getStory(1)["sto_first_ch_id"]?>">Débuter l'histoire</a></li>
         </ul>
@@ -40,7 +40,7 @@
           <span><i class="fa-brands fa-d-and-d fa-3x" style="width: 75px;"></i></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;">
-            <li><a class="dropdown-item" style="height: 200px;" href="#"><?php  if(getStory(2) != null) echo(getStory(2)["sto_description"])?></a></li>
+            <li><a class="dropdown-item" style="height: 200px; word-wrap: break-word; white-space: normal;" href="#"><?php  if(getStory(2) != null) echo(getStory(2)["sto_description"])?></a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
         </ul>
@@ -51,7 +51,7 @@
           <span><i class="fa-solid fa-dungeon fa-3x" style="width: 75px;"></i></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;">
-            <li><a class="dropdown-item" style="height: 200px;" href="#"><?php  if(getStory(3) != null) echo(getStory(3)["sto_description"])?></a></li>
+            <li><a class="dropdown-item" style="height: 200px; word-wrap: break-word; white-space: normal;" href="#"><?php  if(getStory(3) != null) echo(getStory(3)["sto_description"])?></a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
         </ul>
@@ -62,7 +62,7 @@
           <span><i class="fa-solid fa-skull-crossbones fa-3x" style="width: 75px;"></i></i></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;">
-            <li><a class="dropdown-item" style="height: 200px;" href="#"><?php  if(getStory(4) != null) echo(getStory(4)["sto_description"])?></a></li>
+            <li><a class="dropdown-item" style="height: 200px; word-wrap: break-word; white-space: normal;" href="#"><?php  if(getStory(4) != null) echo(getStory(4)["sto_description"])?></a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
         </ul>
@@ -74,7 +74,7 @@
           <!-- <span class="badge rounded-pill badge-notification bg-primary">2</span> -->
         </a>
         <ul class="dropdown-menu dropdown-menu-dark" style="left:50%; margin-left:-85px;" >
-            <li><a class="dropdown-item" style="height: 200px;" href="#"><?php if(getStory(5) != null)  echo(getStory(5)["sto_description"])  ?></a></li>
+            <li><a class="dropdown-item" style="height: 200px; word-wrap: break-word; white-space: normal;" href="#"><?php if(getStory(5) != null)  echo(getStory(5)["sto_description"])  ?></a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Débuter l'histoire</a></li>
         </ul>
